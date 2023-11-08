@@ -1,10 +1,14 @@
+import { ScrollContent } from '@/components/pageComponents/scrollContent';
+import About from '@/pages/about';
 import Home from '@/pages/home';
 
 const Index = () => {
   return (
-    <main className="w-[100%] h-[100%]">
+    <main className="">
       <div>
         <Home/>
+        <ScrollContent/>
+        <About/>
       </div>
     </main>
   )

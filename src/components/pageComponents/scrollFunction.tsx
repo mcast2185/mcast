@@ -1,5 +1,5 @@
 'use client';
-import { useScroll } from 'framer-motion';
+import { motion, useScroll } from 'framer-motion';
 import Image from 'next/image';
 import React, { useRef } from 'react';
 import { customData } from '@/types/customData';
@@ -16,13 +16,17 @@ type customDataProps = (typeof customData)[number];
 const ScrollFunction = (
   // {title, desc, tags, imageUrl}: customDataProps
   )=> {
-  const ref = useRef(null);
-  useScroll({
+  const ref = useRef<HTMLDivElement>(null);
+  const {scrollYProgress} = useScroll({
     target: ref,
     offset: ["0 1", "1.33 1"]
   });
 
   return (
+    <motion.div ref={ref} style={{
+      scale:  scrollYProgress,
+      opacity: scrollYProgress,
+    }} className="mb-3 sm:mb-8 last:mb:-0">
     <section
       className="group bg-gray-100 max-w-[42rem]
       border border-black/5 overflow-hidden
@@ -53,6 +57,7 @@ const ScrollFunction = (
         group-even:-left-40'
       />
     </section>
+    </motion.div>
   )
 }
 
