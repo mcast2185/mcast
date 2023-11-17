@@ -2,9 +2,10 @@
 import React, {useEffect, useRef} from 'react';
 import { useScroll, useTransform, motion} from 'framer-motion';
 import Image, { StaticImageData } from 'next/image';
-
 import Lenis from '@studio-freight/lenis';
+
 import useDimension from '@/components/hooks/useDimension';
+import styles from "../../styles/scrollContent.module.scss";
 
 
 import CODE from '../../static/images/code.png';
@@ -19,9 +20,6 @@ import MATRIX from '../../static/images/matrix1.png';
 import MATRIX2 from '../../static/images/matrix2.png';
 import MATRIX3 from '../../static/images/matrix3.png';
 import MATRIX4 from '../../static/images/matrix4.png';
-
-
-
 
 
 export const ScrollContent = () => {
@@ -50,11 +48,11 @@ export const ScrollContent = () => {
     HOME,
     WORK,
     MATRIX2,
-    MATRIX3,
-    WORK2,
     CODE2,
+    WORK2,
     HOME2,
     MATRIX4,
+    MATRIX3,
     MAC2,
   ];
   
@@ -65,10 +63,10 @@ export const ScrollContent = () => {
     offset: ["start end", "end start"]
   });
 
-  const y = useTransform(scrollYProgress, [0,1], [0,height * 2]);
-  const y2 = useTransform(scrollYProgress, [0,1], [0, height * 3.25]);
-  const y3 = useTransform(scrollYProgress, [0,1], [0,height * 1.45]);
-  const y4 = useTransform(scrollYProgress, [0,1], [0, height * 2.8]);
+  const y = useTransform(scrollYProgress, [0,1], [0,height * 2.21]);
+  const y2 = useTransform(scrollYProgress, [0,1], [0, height * .5]);
+  const y3 = useTransform(scrollYProgress, [0,1], [0,height * 1.2]);
+  const y4 = useTransform(scrollYProgress, [0,1], [0, height * .39]);
 
   useEffect(() => {
     const lenis = new Lenis();
@@ -82,48 +80,31 @@ export const ScrollContent = () => {
   }, [])
 
   return (
-  <div className="main" >
-    <div className="spacer"></div>
-    <div className="gallery">
+  <div className="flex justify-center" >
+    <div className={styles.spacer}></div>
+    <div className={styles.gallery}>
       <ColumnComponent images={[importedImages[0], importedImages[1], importedImages[2]]} y={y}/>
       <ColumnComponent images={[importedImages[3], importedImages[4], importedImages[5]]} y={y2}/>
       <ColumnComponent images={[importedImages[6], importedImages[7], importedImages[8]]} y={y3}/>
       <ColumnComponent images={[importedImages[9], importedImages[10],importedImages[11]]} y={y4}/>
     </div>
-    <div className="spacer"></div>
+    <div className={styles.spacer}></div>
   </div>)
-  // return (
-  // <div className="main" >
-  //   <div className="spacer"></div>
-  //   <div className="gallery">
-  //     <ColumnComponent images={[images[0], images[1], images[2]]} y={y}/>
-  //     <ColumnComponent images={[images[3], images[4], images[5]]} y={y2}/>
-  //     <ColumnComponent images={[images[6], images[7], images[8]]} y={y3}/>
-  //     <ColumnComponent images={[images[9], images[10], images[11]]} y={y4}/>
-  //   </div>
-  //   <div className="spacer"></div>
-  // </div>)
 };
 
 
 
 
-const ColumnComponent = ({images, y=0}: any[any]) => {
+const ColumnComponent = ({images, y=0}:  any[any]) => {
   return (
-    <motion.div style={{y}} className="column">
+    <motion.div
+     style={{y}} 
+     className={styles.column}>
       {
         images.map((src: HTMLImageElement, index: number) =>{
-          return <div key={index} className="imageContainer">
-            <Image 
-              style={{
-                width: "250px",
-                height: "500px",
-                objectFit: "cover"
-              }}
-
-              height={500}
-              width={250}
-              sizes="(min-width: 1200px) 250px, (max-width: 1600px) 250px"
+          return <div key={index} className={styles.imageContainer}>
+            <Image
+              fill
               src={src}
               quality={80}
               alt="images"

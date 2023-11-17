@@ -1,0 +1,11 @@
+@keyframes descriptionAnimation {
+  0% {
+    transform: translateY(35px);
+    opacity: 0;
+    transition: ease-in;
+  }
+  100% {
+    transition: ease-in;
+    opacity: 1;
+  }
+}

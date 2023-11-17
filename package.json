@@ -11,12 +11,13 @@
   "dependencies": {
     "@studio-freight/lenis": "^1.0.27",
     "bootstrap": "^5.3.2",
+    "bootstrap-scss": "^5.3.2",
     "framer-motion": "^10.16.4",
-    "next": "13.5.6",
-    "postcss-import": "^15.1.0",
-    "react": "^18",
+    "next": "^14.0.1",
+    "react": "^18.2.0",
     "react-bootstrap": "^2.9.1",
     "react-dom": "^18",
+    "react-simple-typewriter": "^5.0.1",
     "sass": "^1.69.5",
     "sharp": "^0.32.6"
   },
@@ -28,9 +29,13 @@
     "eslint": "^8",
     "eslint-config-next": "13.5.6",
     "postcss": "^8.4.31",
+    "postcss-flexbugs-fixes": "^5.0.2",
+    "postcss-import": "^15.1.0",
     "postcss-nesting": "^12.0.1",
+    "postcss-preset-env": "^9.3.0",
+    "precss": "^4.0.0",
     "scss": "^0.2.4",
     "tailwindcss": "^3.3.5",
-    "typescript": "^5"
+    "typescript": "^5.2.2"
   }
 }

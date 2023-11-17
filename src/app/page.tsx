@@ -1,5 +1,5 @@
+import Stagger from '@/components/functionality/stagger';
 import { ScrollContent } from '@/components/pageComponents/scrollContent';
-import About from '@/pages/about';
 import Home from '@/pages/home';
 
 const Index = () => {
@@ -7,8 +7,7 @@ const Index = () => {
     <main className="">
       <div>
         <Home/>
-        <ScrollContent/>
-        <About/>
+        {/* <ScrollContent/> */}
       </div>
     </main>
   )

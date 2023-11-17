@@ -1,13 +1,21 @@
-import type { Config } from 'tailwindcss'
-
-const config: Config = {
+/** @type {import('tailwindcss').Config} */
+module.exports = {
   content: [
-    './src/pages/**/*.{js,ts,jsx,tsx,mdx}',
-    './src/components/**/*.{js,ts,jsx,tsx,mdx}',
-    './src/app/**/*.{js,ts,jsx,tsx,mdx}',
+    './src/pages/**/*.{js,ts,jsx,tsx}',
+    './src/components/**/*.{js,ts,jsx,tsx}',
+    './src/app/**/*.{js,ts,jsx,tsx}',
   ],
-  darkMode: 'class', 
   theme: {
+    colors: {
+      "baseGrey": "#4E6E81",
+      "baseBeige":" #F9DBBB",
+      "baseRed":" #FF0303",
+      "baseCharcoal":" #2E3840",
+    },
+    fontFamily: {
+      syne: ['Syne', 'sans-serif'],
+      inter: ['Inter', 'sans-serif'],
+    },
     screens: {
       '2xl': {'min': '1535px'},
       'xl': {'min': '1279px'},
@@ -51,6 +59,7 @@ const config: Config = {
         "WorkSans": ['Work Sans', 'sans-serif'],
         "Syne": ['Syne', 'sans-serif'],
         "Inter": ['Inter', 'sans-serif'],
+        "PetitFormal": ['Petit Formal Script', 'cursive'],
       },
     },
     module: {
@@ -60,12 +69,21 @@ const config: Config = {
           use: [
             'style-loader',
             'css-loader',
-            'sass-loader'
-          ]
-        }
+            {
+              loader: 'sass-loader',
+              options: {
+                additionalData: `@import "./sr/styles/variables.scss";`,
+              },
+            }
+          ], 
+        },
       ]
-    }
+    },
   },
-  plugins: [],
+  plugins: [
+    require( 'tailwindcss' ),
+		require( 'precss' ),
+		require( 'autoprefixer' )
+  ],
 }
-export default config
+// export default config;
