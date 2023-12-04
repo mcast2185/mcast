@@ -1,12 +1,8 @@
-'use client'
-import BG from "../static/images/devbg.svg";
-import PRO from "../static/images/propic.svg";
+'use client';
+import BG from "/public/static/images/devbg.svg";
 import React from 'react'
 import Image from 'next/image';
 import HomeTitle from '@/components/pageComponents/hometitle';
-import { ScrollContent } from "@/components/pageComponents/scrollContent";
-import Stagger from "@/components/functionality/stagger";
-import About from "./about";
 
 //potentially having this component as position absolute
 
@@ -29,8 +25,6 @@ const Home = () => {
       />
       <div className="">
         <HomeTitle/>
-        <About/>
-        {/* <ScrollContent/> */}
       </div>
     </div>
   )

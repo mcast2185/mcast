@@ -20,7 +20,7 @@ export default function RootLayout({
     <html lang="en">
       <Head/>
       <body className={`${inter.className} sm:min-w-[390px] 
-        min-w-full flex min-h-full overflow-hidden sm:p-0 sm:m-0`}>
+        min-w-full flex min-h-full sm:p-0 sm:m-0`}>
         {children}
       </body>
     </html>

@@ -8,18 +8,18 @@ import useDimension from '@/components/hooks/useDimension';
 import styles from "../../styles/scrollContent.module.scss";
 
 
-import CODE from '../../static/images/code.png';
-import CODE2 from '../../static/images/code2.png';
-import WORK from '../../static/images/work.png';
-import WORK2 from '../../static/images/work2.png';
-import HOME from '../../static/images/homesetup.png';
-import HOME2 from '../../static/images/homesetup2.png';
-import MAC from '../../static/images/mac.png';
-import MAC2 from '../../static/images/mac2.png';
-import MATRIX from '../../static/images/matrix1.png';
-import MATRIX2 from '../../static/images/matrix2.png';
-import MATRIX3 from '../../static/images/matrix3.png';
-import MATRIX4 from '../../static/images/matrix4.png';
+import CODE from '/public/static/images/code.png';
+import CODE2 from '/public/static/images/code2.png';
+import WORK from '/public/static/images/work.png';
+import WORK2 from '/public/static/images/work2.png';
+import HOME from '/public/static/images/homesetup.png';
+import HOME2 from '/public/static/images/homesetup2.png';
+import MAC from '/public/static/images/mac.png';
+import MAC2 from '/public/static/images/mac2.png';
+import MATRIX from '/public/static/images/matrix1.png';
+import MATRIX2 from '/public/static/images/matrix2.png';
+import MATRIX3 from '/public/static/images/matrix3.png';
+import MATRIX4 from '/public/static/images/matrix4.png';
 
 
 export const ScrollContent = () => {
@@ -91,8 +91,6 @@ export const ScrollContent = () => {
     <div className={styles.spacer}></div>
   </div>)
 };
-
-
 
 
 const ColumnComponent = ({images, y=0}:  any[any]) => {

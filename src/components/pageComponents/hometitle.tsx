@@ -1,12 +1,17 @@
 'use client'
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
 import { Reveal } from '@/components/functionality/reveal';
 import {Typewriter, useTypewriter } from 'react-simple-typewriter';
 
 import Image from 'next/image';
-import PRO from "../../static/images/propic.svg";
+import PRO from "/public/static/images/propic.svg";
+import LINK from "/public/static/images/linkedin.png";
+import MAIL from "/public/static/images/mail.png";
+import INSTA from "/public/static/images/insta.png";
+import TWITTER from "/public/static/images/twitter.png";
+import REDIRECT from "/public/static/images/redirect.png";
 
 type twriterProps = {
   words: string[]
@@ -18,23 +23,25 @@ const TypeWriterWrapper = ({words}: twriterProps) => {
     setCurrentWordIndex(index % words.length);
   };
 
-  const fontStyles = [
-    "font-syne font-medium",
-    "font-PetitFormal font-medium",
-    "font-BodoniModa font-normal",
-    "font-MajorMonoDisplay font-light",
-  ];
   // const fontStyles = [
-  //   { fontFamily: 'Arial', fontWeight: 500 },
-  //   { fontFamily: 'Times New Roman', fontWeight: 500 },
+  //   "font-syne font-medium",
+  //   "font-PetitFormal font-medium",
+  //   "font-BodoniModa font-normal",
+  //   "font-MajorMonoDisplay font-light",
   // ];
+  const fontStyles = [
+    { fontFamily: "'Syne', sans-serif", fontWeight: 900 },
+    { fontFamily: "'Petit Formal Script', cursive", fontWeight: 500 },
+    { fontFamily: "'Bodoni Moda', serif", fontWeight: 500 },
+    { fontFamily: "'Major Mono Display', monospace", fontWeight: 500 }
+  ];
 
   return (
     <div 
-    className={"".concat(`${fontStyles[currentWordIndex]}`)}
-    // style={fontStyles[currentWordIndex]} 
+    // className={"".concat(`${fontStyles[currentWordIndex]}`)}
+    style={fontStyles[currentWordIndex]} 
     >
-      <Typewriter
+     <span className="text-baseBeige">I</span> am a <Typewriter
         words={words}
         loop={ true}
         deleteSpeed={ 80}
@@ -48,22 +55,22 @@ const TypeWriterWrapper = ({words}: twriterProps) => {
 
 const HomeTitle = () => {
 
-  // const [typeEffect] = useTypewriter({
-  //   words: ['Web Developer', 'Full-Stack Developer', "React Developer", 'NextJS Developer'],
-  //   loop: true,
-  //   deleteSpeed: 80,
-  //   typeSpeed: 110,
-  //   delaySpeed: 910
-  // });
+  const [typeEffect] = useTypewriter({
+    words: ['Web Developer', 'Full-Stack Developer', "React Developer", 'NextJS Developer'],
+    loop: true,
+    deleteSpeed: 80,
+    typeSpeed: 110,
+    delaySpeed: 910
+  });
 
   return (
     <div>
        <div className="home-row flex-row sm:flex-col h-[100vh]" >
         <div className=" h-[100%] flex items-center sm:w-full sm:flex sm:justify-center sm:items-center sm:ml-[2vw] sm:mt-[4vh]" >
           <motion.div 
-            className="absolute flex flex-col h-full w-[100%] sm:w-full pt-[17%] pl-[15%]" >
+            className="absolute flex flex-col h-full w-[100%] sm:w-full pt-[17%] pl-[13%]" >
             <Reveal transition={{duration: .75, delay: .2, ease: 'easeIn'}}>
-              <h2 style={{fontFamily: ""}} className="pl-[.5rem] font-syne text-[22px] sm:text-lg text-baseGrey font-extrabold " >
+              <h2 className="pl-[.5rem] font-syne text-[22px] sm:text-lg text-baseGrey font-extrabold " >
                 <span className="text-baseBeige">H</span>ello, my name is
               </h2>
             </Reveal>
@@ -73,9 +80,9 @@ const HomeTitle = () => {
               </h1>
             </Reveal>
             <div className="home-desc">
-              <h2 className="typewriter pl-[.5rem] font-syne text-[28px] sm:text-lg text-baseGrey font-extrabold py-[5px]" >
-                <span className="text-baseBeige">I</span> am a <TypeWriterWrapper words={['Web Developer', 'Full-Stack Developer', "React Developer", 'NextJS Developer']}/>
-                {/* {typeEffect} */}
+              <h2 className="typewriter pl-[.5rem] font-syne text-[28px] sm:text-lg text-baseGrey font-extrabold py-[5px]" > 
+                {/* <span className="text-baseBeige">I</span> am a {typeEffect} */}
+                <TypeWriterWrapper words={ ['Web Developer', 'Full-Stack Developer', "React Developer", 'NextJS Developer']}/>
               </h2>
               <p className="pl-[.5rem] text-lg font-inter font-light text-opacity-70 text-baseBeige pb-[15px]">
                 I <u className="decoration-baseRed">focus</u> on front-end solutions to uniquely enhance user experience. 
@@ -86,26 +93,26 @@ const HomeTitle = () => {
             {/* projects and contact buttons */}
             <div className="flex flex-row gap-[1rem] pt-[.5rem]"> 
               <motion.div
-                className="w-[140px] h-[72px] rounded-[20px] bg-transparent border-baseGrey border-[2px] cursor-pointer flex flex-row"
+                className="w-[160px] h-[76px] rounded-[20px] bg-transparent border-baseGrey border-[2px] cursor-pointer flex flex-row"
                 whileHover={{ scale: 1.1 }}
                 transition={{ type: "spring", stiffness: 400, damping: 10 }}
               >
-                <Link href="/projects" className='font-inter text-baseBeige flex justify-center py-[10px] text-2xl font-extrabold'>
+                <Link href="/projects" className='font-inter text-baseBeige flex justify-center py-[10px] text-[19px] font-extrabold'>
                   My Works
                 </Link>
-                <Image src="" alt="forward icon" loading='eager' className=""/>
+                <Image src={REDIRECT} alt="forward icon" loading='eager' className="h-[30px] w-[20px] text-[black]" style={{filter: "brightness(10%)"}}/>
               </motion.div>
 
               
               <motion.div
-                className="w-[140px] h-[72px] rounded-[20px] bg-transparent border-baseGrey border-[2px] cursor-pointer"
+                className="w-[160px] h-[76px] rounded-[20px] bg-transparent border-baseGrey border-[2px] cursor-pointer"
                 whileHover={{ scale: 1.1 }}
                 transition={{ type: "spring", stiffness: 400, damping: 10 }}
               >
-                <Link href="/projects" className='font-inter text-baseBeige flex justify-center py-[10px] text-2xl font-extrabold'>
+                <Link href="/projects" className='font-inter text-baseBeige flex justify-center py-[10px] text-[19px] font-extrabold'>
                   Reach Out 
                 </Link>
-                <Image src="" alt="email icon" loading='eager' className=""/>
+                <Image src={MAIL} alt="email icon" loading='eager' className="h-[30px] w-[20px]"/>
               </motion.div>
             </div>
             {/* end */}
@@ -116,9 +123,9 @@ const HomeTitle = () => {
                 Follow me:
               </h2>
               <div className=" flex flex-row pl-[1rem] gap-[1vw]">
-               <Image src="" alt="linkedin image" loading='eager' className=""/>
-               <Image src="" alt="twitter image" loading='eager' className=""/>
-               <Image src="" alt="" loading='eager' className=""/>
+               <Image src={LINK} alt="linkedin image" loading='eager' className="h-[3.5rem] w-[3rem]  text-black "/>
+               <Image src={TWITTER} alt="twitter image" loading='eager' className="h-[3.5rem] w-[3rem]  text-black "/>
+               <Image src={INSTA} alt="" loading='eager' className="bg-baseBeige bg-cover rounded-md h-[3.5rem] w-[3rem]  text-black p-0 m-0 object-contain"/>
               </div>
             </div>
           {/* end */}

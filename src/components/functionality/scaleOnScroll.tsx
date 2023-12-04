@@ -1,6 +1,6 @@
+'use client'
 import React, { useRef } from 'react';
-import { useScroll, useInView, motion, useAnimation, useTransform} from 'framer-motion';
-
+import { useScroll, motion, useAnimation, useTransform} from 'framer-motion';
 
 type Props = {
   children: React.JSX.Element | React.ReactNode
@@ -9,11 +9,10 @@ type Props = {
 // evaluate what other properties need to be added to make a smoother transition for the stagger effect
 // look into the easing function that we read on framers documentation, 
 
-const Stagger = ({children}: Props) => {
+const ScaleOnScroll = ({children}: Props) => {
   const {scrollYProgress} = useScroll();
   const ref = useRef(null);
   const staggerAnimation = useAnimation();
-  const inView = useInView(ref);
   const scale = useTransform(scrollYProgress, [0, 1], [.5, 1]);
   const staggerControl = {
     hidden: {
@@ -41,10 +40,9 @@ const Stagger = ({children}: Props) => {
           scaleY: scrollYProgress}}
         />
         {children}
-        {/* <ScrollContent/> */}
       </motion.div>
     </div>
   )
 }
 
-export default Stagger
+export default ScaleOnScroll
