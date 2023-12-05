@@ -74,7 +74,7 @@ const HomeTitle = () => {
                 <span className="text-baseBeige">H</span>ello, my name is
               </h2>
             </Reveal>
-            <Reveal transition={{duration: 1.3, delay: .5, ease: 'easeIn'}}>
+            <Reveal transition={{duration: 1.5, delay: .4, ease: 'easeIn'}}>
               <h1 className="pl-[1rem] font-inter text-7xl sm:text-3xl text-baseBeige font-extrabold">
                 <span className="text-baseGrey">M</span>ario C.
               </h1>
@@ -93,19 +93,19 @@ const HomeTitle = () => {
             {/* projects and contact buttons */}
             <div className="flex flex-row gap-[1rem] pt-[.5rem]"> 
               <motion.div
-                className="w-[160px] h-[76px] rounded-[20px] bg-transparent border-baseGrey border-[2px] cursor-pointer flex flex-row"
+                className="w-[175px] h-[80px] rounded-[20px] bg-transparent border-baseGrey border-[2px] cursor-pointer flex flex-row items-center justify-center gap-2"
                 whileHover={{ scale: 1.1 }}
                 transition={{ type: "spring", stiffness: 400, damping: 10 }}
               >
                 <Link href="/projects" className='font-inter text-baseBeige flex justify-center py-[10px] text-[19px] font-extrabold'>
                   My Works
                 </Link>
-                <Image src={REDIRECT} alt="forward icon" loading='eager' className="h-[30px] w-[20px] text-[black]" style={{filter: "brightness(10%)"}}/>
+                <Image src={REDIRECT} alt="forward icon" loading='eager' className="h-[35px] w-[25px] text-[white]" style={{filter: "brightness(10%)"}}/>
               </motion.div>
 
               
               <motion.div
-                className="w-[160px] h-[76px] rounded-[20px] bg-transparent border-baseGrey border-[2px] cursor-pointer"
+                className="w-[175px] h-[80px] rounded-[20px] bg-transparent border-baseGrey border-[2px] cursor-pointer flex flex-row items-center justify-center gap-2"
                 whileHover={{ scale: 1.1 }}
                 transition={{ type: "spring", stiffness: 400, damping: 10 }}
               >
@@ -122,10 +122,10 @@ const HomeTitle = () => {
               <h2 className="pl-[.5rem] font-syne text-[22px] sm:text-lg text-baseGrey font-extrabold ">
                 Follow me:
               </h2>
-              <div className=" flex flex-row pl-[1rem] gap-[1vw]">
+              <div className=" flex flex-row items-center pl-[1rem] gap-[1vw]">
                <Image src={LINK} alt="linkedin image" loading='eager' className="h-[3.5rem] w-[3rem]  text-black "/>
                <Image src={TWITTER} alt="twitter image" loading='eager' className="h-[3.5rem] w-[3rem]  text-black "/>
-               <Image src={INSTA} alt="" loading='eager' className="bg-baseBeige bg-cover rounded-md h-[3.5rem] w-[3rem]  text-black p-0 m-0 object-contain"/>
+               <Image src={INSTA} alt="" loading='eager' className="border-baseRed border-2 bg-cover rounded-md h-[3rem] w-[3rem]  text-black p-0 m-0 object-contain"/>
               </div>
             </div>
           {/* end */}

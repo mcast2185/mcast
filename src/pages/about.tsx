@@ -7,7 +7,7 @@ import OPEN from '/public/static/images/opentag.png';
 import CLOSE from '/public/static/images/closedtag.png';
 import ScaleOnScroll from '@/components/functionality/scaleOnScroll';
 import { Reveal } from '@/components/functionality/reveal';
-import RippleImage from '@/components/functionality/rippleImage';
+
 
 
 // fix the positioning issue we are facing with the staggering images
@@ -25,7 +25,7 @@ const About = () => {
             <div className="flex flex-col relative h-[80vh] w-[40vw]">
               <div className='w-[30vw] h-[100%] ml-[10%] flex flex-row gap-5 items-center'>
                 <Suspense fallback="Loading...">
-                  <RippleImage src='/public/static/images/working.png' alt='about image' className="bg-image h-[55vh] w-[20vw] rounded-sm shadow-md shadow-baseCharcoal bg-no-repeat bg-cover "/>
+                  <Image src={WORKING} alt='about image' className="bg-image h-[55vh] w-[20vw] rounded-sm shadow-md shadow-baseCharcoal bg-no-repeat bg-cover "/>
                   {/* <Image src={WORKING} alt='about image' className="bg-image h-[55vh] w-[20vw] rounded-sm shadow-md shadow-baseCharcoal bg-no-repeat bg-cover "/> */}
                   <div className="pt-[2.5rem]">
                     <Image src={OPEN} alt='about image' className="h-[3.5rem] w-[3rem] "/>
@@ -37,12 +37,12 @@ const About = () => {
                   <div className="pt-[2.5rem]">
                     <Image src={CLOSE} alt='about image' className="h-[5rem] w-[4.5rem] z-10 border-2 border-[black] rounded-lg"/>
                   </div>
-                  <RippleImage src='/public/static/images/working2.png' alt='about image' className="bg-image h-[45vh] w-[19vw] z-10 rounded-sm shadow-md shadow-baseCharcoal "/>
+                  <Image src={WORKING2} alt='about image' className="bg-image h-[45vh] w-[19vw] z-10 rounded-sm shadow-md shadow-baseCharcoal "/>
                 </Suspense>
               </div>
             </div>
             <div className="flex flex-col  pl-[10%] mt-[10%]" >
-              <Reveal transition={{duration: .75, delay: .2, ease: 'easeIn'}}>
+              <Reveal transition={{duration: .75, delay: .5, ease: 'easeInOut'}}>
                 <h1 className="text-baseGrey text-7xl font-syne font-extrabold" >
                 About
                 </h1>

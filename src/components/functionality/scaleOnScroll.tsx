@@ -13,7 +13,8 @@ const ScaleOnScroll = ({children}: Props) => {
   const {scrollYProgress} = useScroll();
   const ref = useRef(null);
   const staggerAnimation = useAnimation();
-  const scale = useTransform(scrollYProgress, [0, 1], [.5, 1]);
+  const scale = useTransform(scrollYProgress, [0, 1], [.8, 1]);
+  const opacity = useTransform(scrollYProgress, [0, 1], [.3, 1]);
   const staggerControl = {
     hidden: {
       opacity: 0,
@@ -30,7 +31,7 @@ const ScaleOnScroll = ({children}: Props) => {
       justify-center items-center w-[100vw] h-[100%]"
     >
       <motion.div
-        style={{scale}}
+        style={{scale, opacity}}
         animate={staggerAnimation}
         variants={staggerControl}
         initial="hidden"
