@@ -9,3 +9,27 @@
     opacity: 1;
   }
 }
+
+@keyframes toggleAnimationOn {
+  0% {
+    transition: ease-in-out;
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(100px);
+    opacity: 0;
+    transition: ease-in-out;
+  }
+}
+
+@keyframes toggleAnimationOff {
+  0% {
+    transition: ease-in-out;
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0px);
+    transition: ease-in-out;
+    opacity: 1;
+  }
+}

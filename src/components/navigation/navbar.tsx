@@ -1,44 +1,45 @@
+'use client';
 import Image from 'next/image';
 import Link from 'next/link';
 import React from 'react';
 import LOGO from '/public/static/images/devlogo.svg'
+import useHoverEffect from '../hooks/useHoverEffect';
 
 
 const Navbar = () => {
-  return (
-    <div className="relative">
-      <div className="w-[100vw] flex " >
-       <div className="flex flex-start mt-3" >
-        <Image src={LOGO} alt="" className="h-[9vh] w-[12vw]"/>
-       </div>
 
-      <div className="w-[100%] h-[9.6vh] pt-3 absolute flex justify-center">
-        <div className="w-[50vw] h-[100%] bg-[#494949] drop-shadow shadow-[#5a5a5a] shadow-inner rounded-[50px] flex flex-row pl-[10px] gap-7 items-centers justify-center">
-          <Link href="/" className="mt-[1.2rem]">
-            <h3 className="font-inter font-extralight text-2xl text-baseBeige">
-              Home
-            </h3>
-          </Link> 
-          <Link href="/about" className="mt-[1.2rem]">
-            <h3 className="font-inter font-extralight text-2xl text-baseBeige">
-              About
-            </h3>
-          </Link> 
-          <Link href="/portfolio" className="mt-[1.2rem]">
-            <h3 className="font-inter font-extralight text-2xl text-baseBeige">
-              Portfolio
-            </h3>
-          </Link> 
-          <Link href="/contact" className="mt-[1.2rem]">
-            <h3 className="font-inter font-extralight text-2xl text-baseBeige">
-              Contact
-            </h3>
-          </Link> 
-          {/* <Link href="" className=""> */}
-            {/* <Image src={LOGO} alt="" className="h-[9vh] w-[12vw]"/> */}
-          {/* </Link>  */}
+  return (
+    <div className="absolute z-10">
+      <div className="w-[100vw] flex " >
+        <div className="flex flex-start mt-[-15px] h-[140px]" >
+          <Image src={LOGO} alt="" className="h-[100%] w-[17.5vw] "/>
         </div>
-      </div>
+        <div className="w-[100%] h-[80px] pt-6 items-center absolute flex justify-center">
+          <div className="w-[45vw] h-[100%] bg-[#ffffff] bg-opacity-95 drop-shadow shadow-[#5a5a5a] shadow-inner 
+            rounded-[50px] flex flex-row px-[10px] gap-[3.5rem] items-centers justify-center" id="nav-container">
+
+            <Link onMouseEnter={() => useHoverEffect("home")} href="/" id="home" 
+            className="font-inter font-extralight text-[18px] text-baseCharcoal mt-[.8rem] overflow-hidden ">
+                Home 
+            </Link>
+            <p id="divider" className="flex items-center text-xs py-5"> | </p> 
+            <Link onMouseEnter={() => useHoverEffect("about")} href="/about" id="about" 
+              className="font-inter font-extralight text-[18px] text-baseCharcoal mt-[.8rem] overflow-hidden">
+                About
+            </Link>
+            <p id="divider" className="flex items-center text-xs py-5"> | </p> 
+            <Link onMouseEnter={() => useHoverEffect("portfolio")} href="/portfolio" id="portfolio" 
+              className="font-inter font-extralight text-[18px] text-baseCharcoal mt-[.8rem] overflow-hidden">
+                Portfolio
+            </Link>
+            <p id="divider" className="flex items-center text-xs py-5"> | </p> 
+            <Link onMouseEnter={() => useHoverEffect("contact")} href="/contact" id="contact" 
+              className="font-inter font-extralight text-[18px] text-baseCharcoal mt-[.8rem] overflow-hidden">
+                Contact
+            </Link>
+
+          </div>
+        </div>
       </div>
     </div>
   );

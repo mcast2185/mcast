@@ -24,7 +24,6 @@ import MATRIX4 from '/public/static/images/matrix4.png';
 
 export const ScrollContent = () => {
   const columnRef = useRef(null);
-  console.log()
 
   const images: string[] = [
     'code.png', 
