@@ -3,31 +3,37 @@ import Navbar from '@/components/navigation/navbar';
 import About from '@/pages/about';
 import Home from '@/pages/home';
 import Image from 'next/image';
-import Script from 'next/script';
-import BG from '/public/static/images/devbg.svg'
+import BG from '/public/static/images/devbg.svg';
+import PageDivider from '@/components/pageComponents/pageDivider';
+import Portfolio from '@/pages/portfolio';
+import Contact from '@/pages/contact';
 
 const Index = () => {
   return (
     <>
-    <main >
-      <div className="h-[100vh] w-[100vw]">
-        <Image src={BG} 
+    <main className=" w-[100vw]" >
+      <div className="inset-0 z-[-10] ">
+        <Image 
+          src={BG} 
           role="img"  
           alt="testing" 
           loading='eager' 
           style={{
-            opacity: ".57",
+            opacity: "1",
+            objectFit: 'cover',
             position: "fixed",
             zIndex: "-10",
-            width: "100vw",
-            height: "100%",
+            backgroundRepeat: "no-repeat",
             backgroundSize: "cover"
           }} 
         />
-        <div className="">
+        <div className="w-[100vw]">
           <Navbar/>
           <Home/>
           <About/>
+          <PageDivider/>
+          <Portfolio/>
+          <Contact />
         </div>
       </div>
     </main>

@@ -1,19 +1,19 @@
-// const {useEffect, useState} = require('react');
-import { useEffect } from "react";
-
-
-
 
 const useHoverEffect = ((linkId: string) => {
-  const _links = document.querySelector("#nav-container");
 
   const toggleOn = (array: any[]) => {
-    console.log("updated array: ", array);
+    array.forEach((child: Element) => {
+      child.className = "toggleAnimationOn ";
+      document.querySelectorAll("#divider").forEach(child => child.className ="toggleAnimationOn");
+    })
   };
 
-
   const toggleOff = (array: any[]) => {
-    console.log('testing mouse leave', array)
+    array.forEach((child: Element) => {
+      child.className = "toggleAnimationOff";
+      document.querySelectorAll("#divider").forEach(child => child.className ="toggleAnimationOff");
+    })
+    console.log('testing mouse leave')
   };
 
 
@@ -21,53 +21,35 @@ const useHoverEffect = ((linkId: string) => {
   const eventTrigger = () => {
     let arry: Element[] = [];
 
-      
-      
-      for (let i = 0; document.querySelector("#nav-container")!.children.length > i; i++) {
-        let child = null;
-        child = document.querySelector("#nav-container")!.children[i];
+    for (let i = 0; document.querySelector("#nav-container")!.children.length > i; i++) {
+      let child = null;
+      child = document.querySelector("#nav-container")!.children[i];
 
-        if (arry.length >= 4 ) {
-          arry.slice(0,3);
-          console.log("array condition met: ", arry.slice(0,3));
+      if (arry.length >= 4 ) {
+        arry.slice(0,3);
+      };
+      
+      if (child.id !== linkId) {
+        if (arry.includes(child) || child.id === "divider" ) {
+          continue;
+        } else {
+          arry.push(child);
+          console.log(`child element #${i} pushed: `);
         };
-        
-        if (child.id !== linkId) {
-          if (arry.includes(child) || child.id === "divider" ) {
-            console.log("continue statement triggered by conditional element");
-            continue;
-          } else {
-            arry.push(child);
-            console.log(`child element #${i} pushed: `, child.id);
-          };
-        };
+      };
 
-        if (child.id === linkId) {
-          child.addEventListener("mouseenter", () => {
-            toggleOn(arry);
-          });
-          child.addEventListener("onmouseleave", () => {
+      if (child.id === linkId) {
+        child.addEventListener("mouseenter", () => {
+          child!.className = `font-inter font-extralight text-[1.15rem] text-baseCharcoal hover:bg-[#cdcdcd] hover:bg-opacity-[.3] hover:rounded-[18px] 
+            overflow-hidden hover:scale-[1.06] ease-in-out hover:font-normal transition-[500ms] hover:text-[22px] px-[8px] p-[6px] `;
+          toggleOn(arry);
+        });
+        if (child) {
+          child.addEventListener("mouseleave", () => {
             toggleOff(arry);
           });
         };
-
-      // let updatedArray = arry.filter(()=>{
-      //   arry.forEach((el)=> {
-      //     let filteredArray = []; 
-      //     el.id !== linkId ? filteredArray.push(el) : console.log('event trigger error');
-      //     return filteredArray;
-      //   });
-      // });
-
-      // if (child.id === linkId) {
-      //   child.addEventListener("mouseenter", () => {
-      //     toggleOn(updatedArray);
-      //   });
-      //   child.addEventListener("mouseleave", () => {
-      //     toggleOff(updatedArray);
-      //   });
-      // };
-
+      };
     };
   };
     

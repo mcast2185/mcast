@@ -1,17 +1,15 @@
-import Link from 'next/link'
-import React from 'react'
+import React from 'react';
 
 const Contact = () => {
   return (
-    <div className='w-[100vw] h-[100vh]' style={{backgroundColor: "var(--base-pink)"}}>
-      <h1 style={{fontFamily: 'var(--base-font-family)'}} >
-        Contact
-      </h1>
-      <Link href="/" style={{fontFamily: 'var(--base-font-family)', color: "var(--base-blue)"}} >
-        Contact
-      </Link>
+    <div className="w-[100vw] h-[100vh]">
+      <div className="border-t-[5px] border-baseRed border-l-0 border-r-0 border-b-0 w-[100%]">
+       <div className="px-[25vw] border border-baseCharcoal" >
+        
+       </div>
+      </div>
     </div>
   )
 }
 
-export default Contact
+export default Contact;

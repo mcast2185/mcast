@@ -5,7 +5,7 @@ import "../styles/styles.scss";
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
-    <div>
+    <div >
       <Component {...pageProps} />
     </div>
   );

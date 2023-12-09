@@ -1,24 +1,44 @@
 
 .toggleAnimationOn {
-  animation: 1s ease-in toggleAnimationOn;
+  animation: 1s ease-in-out;
   font-family: 'Inter' sans-serif;
   font-weight: 200;
-  font-size: 19px;
+  font-size: 1.15rem;
   color: #2E3840;
-  // transform-origin: 50% 50%;
-  // transform: translate(-100%, -100%);
+  opacity: 0.3;
+  transition-delay: 
+    scale 800ms 1s;
+  transition: 
+    opacity .75s;
+
+  transition-property: all, opacity, transform, translate;
+  transition-duration: 800ms 800ms 800ms 800ms;
+
+  // transform: scale(1, .05);
+  transform: scale(.85, .95);
   overflow: hidden;
 }
 
 .toggleAnimationOff {
-  animation: 1s ease-in toggleAnimationOff;
+  animation: 1.5s ease-in-out;
+
   font-family: 'Inter' sans-serif;
   font-weight: 200;
-  font-size: 19px;
+  font-size: 1.15rem;
+  opacity: 1;
+  transition-property: all, opacity, transform, translate;
+  transition-duration: 800ms 800ms 800ms 800ms;
+  transition: ease-in-out;
   color: #2E3840;
-  // transform-origin: 50% 50%;
-  // transform: translate(-100%, -100%);
   overflow: hidden;
+}
+
+.divider {
+  font-size: 11px !important;
+  padding-top: 20px !important;
+  padding-bottom: 20px !important;
+  display: flex;
+  align-items: center;
 }
 
 #divider {
@@ -30,38 +50,35 @@
 }
 
 #home {
-  transition: ease-in-out;
-  // // &:hover {
-  // //   transition: ease-in-out;
-  // //   transform: translate(scaleY(1.05));
-  // //   color: #4E6E81;
-  // //   text-shadow: 1px 1.5px 3px black;
-  // }
+  
+  transition: 
+    opacity .95s ease-in-out;
+
+  transition-property: all, opacity, transform, translate;
+  transition-duration: 800ms 800ms 800ms 800ms;
+
 }
 #about {
-  transition: ease-in-out;
-  // // &:hover {
-  // //   transition: ease-in-out;
-  // //   transform: translate(scaleY(1.05));
-  // //   color: #4E6E81;
-  // //   text-shadow: 1px 1.5px 3px black;
-  // }
+  transition: 
+    opacity .95s ease-in-out;
+
+    transition-property: all, opacity, transform, translate;
+  transition-duration: 800ms 800ms 800ms 800ms;
+
 }
 #portfolio {
-  transition: ease-in-out;
-  // // &:hover {
-  // //   transition: ease-in-out;
-  // //   transform: translate(scaleY(1.05));
-  // //   color: #4E6E81;
-  // //   text-shadow: 1px 1.5px 3px black;
-  // }
+    transition: 
+    opacity .95s ease-in-out;
+
+    transition-property: all, opacity, transform, translate;
+  transition-duration: 800ms 800ms 800ms 800ms;
+
 }
 #contact {
-  transition: ease-in-out;
-  // // &:hover {
-  // //   transition: ease-in-out;
-  // //   transform: translate(scaleY(1.05));
-  // //   color: #4E6E81;
-  // //   text-shadow: 1px 1.5px 3px black;
-  // }
+  transition: 
+    opacity .95s ease-in-out;
+
+    transition-property: all, opacity, transform, translate;
+  transition-duration: 800ms 800ms 800ms 800ms;
+
 }

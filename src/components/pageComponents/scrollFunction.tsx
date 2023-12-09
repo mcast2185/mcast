@@ -13,9 +13,7 @@ type customDataProps = (typeof customData)[number];
 // the second string value containse a similar set of numbers. the first number 1.33 
 // triggers animation end 33% past the end point of our target
 
-const ScrollFunction = (
-  // {title, desc, tags, imageUrl}: customDataProps
-  )=> {
+const ScrollFunction = () => {
   const ref = useRef<HTMLDivElement>(null);
   const {scrollYProgress} = useScroll({
     target: ref,

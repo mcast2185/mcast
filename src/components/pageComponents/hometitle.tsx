@@ -1,5 +1,5 @@
 'use client'
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
 import { Reveal } from '@/components/functionality/reveal';
@@ -15,7 +15,7 @@ import REDIRECT from "/public/static/images/redirect.png";
 
 type twriterProps = {
   words: string[]
-} 
+}; 
 
 const TypeWriterWrapper = ({words}: twriterProps) => {
   const [currentWordIndex, setCurrentWordIndex] = useState(0);
@@ -23,12 +23,7 @@ const TypeWriterWrapper = ({words}: twriterProps) => {
     setCurrentWordIndex(index % words.length);
   };
 
-  // const fontStyles = [
-  //   "font-syne font-medium",
-  //   "font-PetitFormal font-medium",
-  //   "font-BodoniModa font-normal",
-  //   "font-MajorMonoDisplay font-light",
-  // ];
+
   const fontStyles = [
     { fontFamily: "'Syne', sans-serif", fontWeight: 900 },
     { fontFamily: "'Petit Formal Script', cursive", fontWeight: 500 },
@@ -37,9 +32,7 @@ const TypeWriterWrapper = ({words}: twriterProps) => {
   ];
 
   return (
-    <div 
-    // className={"".concat(`${fontStyles[currentWordIndex]}`)}
-    style={fontStyles[currentWordIndex]} 
+    <div style={fontStyles[currentWordIndex]} 
     >
      <span className="text-baseBeige">I</span> am a <Typewriter
         words={words}
@@ -67,7 +60,8 @@ const HomeTitle = () => {
     <div>
        <div className="home-row flex-row sm:flex-col h-[100vh]" >
         <div className=" h-[100%] flex items-center sm:w-full sm:flex sm:justify-center sm:items-center sm:ml-[2vw] sm:mt-[4vh]" >
-          <motion.div 
+          {/* rework the padding/margin measuring units */}
+          <motion.div  id="home-header"
             className="absolute flex flex-col h-full w-[100%] sm:w-full pt-[17%] pl-[13%]" >
             <Reveal transition={{duration: .75, delay: .2, ease: 'easeIn'}}>
               <h2 className="pl-[.5rem] font-syne text-[22px] sm:text-lg text-baseGrey font-extrabold " >
@@ -81,7 +75,6 @@ const HomeTitle = () => {
             </Reveal>
             <div className="home-desc">
               <h2 className="typewriter pl-[.5rem] font-syne text-[28px] sm:text-lg text-baseGrey font-extrabold py-[5px]" > 
-                {/* <span className="text-baseBeige">I</span> am a {typeEffect} */}
                 <TypeWriterWrapper words={ ['Web Developer', 'Full-Stack Developer', "React Developer", 'NextJS Developer']}/>
               </h2>
               <p className="pl-[.5rem] text-lg font-inter font-light text-opacity-70 text-baseBeige pb-[15px]">

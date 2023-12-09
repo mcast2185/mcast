@@ -5,7 +5,7 @@ interface Props {
   children: JSX.Element;
   width?: "fit-content" | "100%";
   transition: { duration: number, delay: number, ease: string}
-}
+};
 
 export const Reveal = ({ children, width ="fit-content", transition}: Props) => {
   const ref = useRef(null);

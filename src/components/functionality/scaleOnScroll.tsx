@@ -1,6 +1,7 @@
 'use client'
-import React, { useRef } from 'react';
+import React, { useEffect, useRef } from 'react';
 import { useScroll, motion, useAnimation, useTransform} from 'framer-motion';
+import Lenis from '@studio-freight/lenis';
 
 type Props = {
   children: React.JSX.Element | React.ReactNode
@@ -10,11 +11,24 @@ type Props = {
 // look into the easing function that we read on framers documentation, 
 
 const ScaleOnScroll = ({children}: Props) => {
+
+
+  useEffect(() => {
+    const lenis = new Lenis();
+
+    function raf(time: any) {
+      lenis.raf(time)
+      requestAnimationFrame(raf)
+    };
+
+    requestAnimationFrame(raf);
+  }, []);
+  
   const {scrollYProgress} = useScroll();
   const ref = useRef(null);
   const staggerAnimation = useAnimation();
-  const scale = useTransform(scrollYProgress, [0, 1], [.8, 1]);
-  const opacity = useTransform(scrollYProgress, [0, 1], [.3, 1]);
+  const scale = useTransform(scrollYProgress, [0, .25], [.4, 1]);
+  const opacity = useTransform(scrollYProgress, [0, .25], [.25, 1]);
   const staggerControl = {
     hidden: {
       opacity: 0,
@@ -27,8 +41,7 @@ const ScaleOnScroll = ({children}: Props) => {
   };
 
   return (
-    <div ref={ref} className="flex 
-      justify-center items-center w-[100vw] h-[100%]"
+    <div ref={ref} className=""
     >
       <motion.div
         style={{scale, opacity}}

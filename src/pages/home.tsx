@@ -1,19 +1,17 @@
 'use client';
-import React from 'react'
+import React from 'react';
 
 import HomeTitle from '@/components/pageComponents/hometitle';
-
-//potentially having this component as position absolute
 
 const Home = () => {
 
   return (
-    <div className="h-[100vh] w-[100vw] relative">
-      <div className="">
+    <div className="home-component">
+      <div>
         <HomeTitle/>
       </div>
     </div>
-  )
-}
+  );
+};
 
 export default Home;
