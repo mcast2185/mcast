@@ -1,5 +1,5 @@
 'use client'
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
 import { Reveal } from '@/components/functionality/reveal';
@@ -22,6 +22,7 @@ const TypeWriterWrapper = ({words}: twriterProps) => {
   const handleTyping = (index: number) => {
     setCurrentWordIndex(index % words.length);
   };
+
 
 
   const fontStyles = [
@@ -139,4 +140,4 @@ const HomeTitle = () => {
   )
 }
 
-export default HomeTitle
+export default HomeTitle;

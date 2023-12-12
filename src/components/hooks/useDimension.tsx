@@ -1,6 +1,6 @@
-const {useEffect, useState} = require('react');
+const {useEffect, useState, useRef} = require('react');
 
-const useDimension = () => {
+export const useDimension = () => {
   const [dimension, setDimension] = useState({width:0, height:0});
   const updateDimension = () => {
     const {innerWidth, innerHeight } = window;
@@ -16,5 +16,3 @@ const useDimension = () => {
 
   return dimension;
 };
-
-export default useDimension;

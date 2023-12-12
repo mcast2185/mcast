@@ -109,6 +109,7 @@ html {
   padding-top: 1vh;
   padding-bottom: 1vh;
   position: relative;
+  width: 100vw;
 }
 // img {
 //   position: absolute;
@@ -133,8 +134,8 @@ html {
 .parallax {
   // overflow-y: hidden;
   // overflow-x: hidden;
-  height: 15vh !important;
   // letter-spacing: -2px;
+  height: 10vh !important;
   line-height: 0.5;
   margin: 0;
   white-space: nowrap;

@@ -22,14 +22,12 @@ export default function RootLayout({
     <html lang="en">
       <head>
         <Head/>
-        <Script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.ripples/0.5.3/jquery.ripples.min.js" strategy="beforeInteractive" />
       </head>
       <body className={`${inter.className} sm:min-w-[390px] 
         min-w-full flex min-h-full sm:p-0 sm:m-0`} >
           <div >
           {children}
         </div>
-        <Script src="https://code.jquery.com/jquery-3.4.1.min.js" strategy="afterInteractive" />
       </body>
     </html>
   );

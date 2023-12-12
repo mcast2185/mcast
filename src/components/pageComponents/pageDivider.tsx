@@ -1,5 +1,5 @@
 'use client';
-import "../../styles/pageDivider.scss";
+import React from 'react';
 import { useEffect, useRef, useState } from "react";
 import {
   motion,
@@ -8,15 +8,13 @@ import {
   useTransform,
   useMotionValue,
   useVelocity,
-  useAnimationFrame
+  useAnimationFrame,
+  AnimatePresence
 } from "framer-motion";
 import { wrap } from "@motionone/utils";
 
-import React from 'react';
 import { ArrangedImg, ArrangedImgTwo } from "../functionality/arrangedImg";
-
-
-
+import "../../styles/pageDivider.scss";
 
 
 interface ParallaxProps {
@@ -32,24 +30,16 @@ function ParallaxText({ children, baseVelocity = 100 }: ParallaxProps) {
     damping: 50,
     stiffness: 400
   });
-  const velocityFactor = useTransform(smoothVelocity, [0, 1000], [0, 5], {
+  const velocityFactor = useTransform(smoothVelocity, [0, 1500], [0, 5], {
     clamp: true
   });
 
-
-  // This is a magic wrapping for the length of the text - you
-  // have to replace for wrapping that works for you or dynamically
-  // calculate
-
-  const x = useTransform(baseX, (v) => `${wrap(-29, -59, v)}%`);
+  let x = useTransform(baseX, (v) => `${wrap(-25, -50, v)}%`);
 
   const directionFactor = useRef<number>(1);
   useAnimationFrame((t, delta) => {
-    let moveBy = directionFactor.current * baseVelocity * (delta / 2000);
+    let moveBy = directionFactor.current * baseVelocity * (delta / 1300);
 
-    
-    // This is what changes the direction of the scroll once we
-    // switch scrolling directions.
 
     if (velocityFactor.get() < 0) {
       directionFactor.current = -1;
@@ -62,23 +52,18 @@ function ParallaxText({ children, baseVelocity = 100 }: ParallaxProps) {
     baseX.set(baseX.get() + moveBy);
   });
 
-  
-  // The number of times to repeat the child text should be dynamically calculated
-  // based on the size of the text and viewport. Likewise, the x motion value is
-  // currently wrapped between -20 and -45% - this 25% is derived from the fact
-  // we have four children (100% / 4). This would also want deriving from the
-  // dynamically generated number of children.
-  
   return (
     <div className="parallax">
-      <motion.div className="scroller" style={{ x }}>
+      <AnimatePresence>
+      <motion.div 
+        exit={{scaleX: 0}} className="scroller" style={{ x }}
+        whileInView={{scaleX: 1, overscrollBehaviorX: "contain"}}>
         {children} 
         {children} 
-        <span id="span">{children} </span>
-        <span id="span">{children} </span>
-        {/* <span id="span">{children} </span> */}
-        {/* <span id="span">{children} </span> */}
+        {children} 
+        {children} 
       </motion.div>
+    </AnimatePresence>
     </div>
   );
 };
@@ -87,33 +72,34 @@ export default function PageDivider() {
   const [loaded, isLoaded] = useState(false);
 
   useEffect(() => {
-    if (ArrangedImg && ArrangedImgTwo) {
-      isLoaded(true);
-    };
-  }, [ArrangedImg, ArrangedImgTwo]);
-  
+
+    isLoaded(true);
+  }, [isLoaded]);
+    
   return (
-    <section id="section">
-      <ParallaxText baseVelocity={-2}>
-        <div className="flex flex-row ">
-          {loaded === true && 
-          ArrangedImg.map((img, index) =>
-            <div className="mx-[45px]">
-              {ArrangedImg[index]}
-            </div>
-          )}
-        </div>
-      </ParallaxText>
-      <ParallaxText baseVelocity={3}>
-        <div className="flex flex-row">
-          {loaded === true && 
-          ArrangedImgTwo.map((img, index) =>
-            <div className="mx-[45px] ">
-              {img}
-            </div>
-          )}
-        </div>
-      </ParallaxText>
-    </section>
+    <section id="section" >
+      {loaded === true && (
+        <ParallaxText baseVelocity={-1.7}>
+          <div id="xAxisLeft" className="flex flex-row">
+              {ArrangedImg.map((img, index) =>
+                <div id={`skillImg_${index}`} key={index} >
+                  {img }
+                </div>
+              )}
+          </div>
+        </ParallaxText>
+      )} 
+      {loaded === true && (
+        <ParallaxText baseVelocity={2.2}>
+          <div id="xAxisRight" className="flex flex-row">
+            {ArrangedImgTwo.map((img, index) => 
+              <div id={`skillImg_${index}`} key={index} >
+                {img}
+              </div>
+            )}
+          </div>
+        </ParallaxText>
+        )} 
+      </section>
   );
 };

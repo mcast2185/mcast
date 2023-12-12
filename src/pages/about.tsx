@@ -32,28 +32,28 @@ const About = () => {
 
   return (
     
-      <div className='object-contain'>
-        <div className="bg-[#ffff] bg-opacity-50 h-[100vh] w-[100vw] pb-[4vh]">
+      <div className='flex h-[100vh] w-[100vw]'>
+        <div className="bg-[#ffff] h-[100%] w-[100%] pb-[4vh] flex flew-col">
           <ScaleOnScroll>
             <div className='w-[100vw] flex flex-row ' >
               <div className="flex flex-col relative object-contain h-[100vh] w-[40vw]">
                 <div className='w-[30vw] h-[40vh] ml-[10%] object-contain flex flex-row gap-5 items-center mt-[10%]'>
                   {/* <Suspense fallback="Loading..."> */}
-                    <Image src={WORKING} alt='about image' id="ripple-image"
-                      className="bg-image h-[32rem] w-[20vw] rounded-sm shadow-md shadow-baseCharcoal bg-no-repeat bg-cover "/>
+                    <Image priority src={WORKING} alt='about image' id="ripple-image"
+                      className="bg-image h-[28rem] w-[20vw] rounded-sm shadow-md shadow-baseCharcoal bg-no-repeat bg-cover "/>
                     {/* <div id="ripple-image" className="ripple-image h-[55vh] w-[20vw] rounded-sm shadow-md shadow-baseCharcoal bg-no-repeat bg-cover "/> */}
                     <div className="pt-[2.5rem]">
-                      <Image src={OPEN} alt='about image' className="h-[3.5rem] w-[3rem] "/>
+                      <Image priority src={OPEN} alt='about image' className="h-[3.5rem] w-[3rem] "/>
                     </div>
                   {/* </Suspense> */}
                 </div>
                 <div className='w-[30vw] h-[40vh] ml-[20%] absolute pt-[85%] flex flex-row gap-5 items-center justify-end pb-[20%]'>
                   {/* <Suspense fallback="Loading..."> */}
                     <div className="pt-[2.5rem]">
-                      <Image src={CLOSE} alt='about image' className="h-[5rem] w-[4.5rem] z-10 border-2 border-[black] rounded-lg"/>
+                      <Image priority src={CLOSE} alt='about image' className="h-[5rem] w-[4.5rem] z-10 border-2 border-[black] rounded-lg"/>
                     </div>
-                    <Image src={WORKING2} alt='about image' id="ripple-image-2"
-                      className="bg-image h-[24rem] w-[19vw] z-10 rounded-sm shadow-md shadow-baseCharcoal "/>
+                    <Image priority src={WORKING2} alt='about image' id="ripple-image-2"
+                      className="bg-image h-[24rem] w-[19vw] z-10 rounded-sm shadow-md shadow-baseCharcoal  bg-no-repeat bg-cover  "/>
                   {/* </Suspense> */}
                 </div>
               </div>
@@ -115,6 +115,14 @@ const About = () => {
             </div>
           </ScaleOnScroll>
         </div>
+      <div className="absolute mt-[96vh] w-[100%] flex justify-center" >
+        <div className="w-[20vw] h-[8vh] bg-baseRed bg-opacity-[.35] drop-shadow shadow-[#3c3c3c] shadow-lg 
+          rounded-[20px] z-[10] flex content-center px-[10px] items-center justify-center scale-95" >
+          <h3 className="font-MajorMonoDisplay font-bold text-3xl text-baseBeige flex justify-center">
+            Known Skills:
+          </h3>
+        </div>
+      </div>
       </div>
 
   )
