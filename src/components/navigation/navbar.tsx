@@ -30,9 +30,6 @@ const Navbar = () => {
   };
   useEffect(()=> {
     document.querySelector("#home-header")!.setAttribute('ref', `${ref}`);
-    // if (view) {
-    //   opacityAnimation.start('hidden')
-    // }
   },[]);
 
   return (

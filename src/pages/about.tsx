@@ -38,29 +38,24 @@ const About = () => {
             <div className='w-[100vw] flex flex-row ' >
               <div className="flex flex-col relative object-contain h-[100vh] w-[40vw]">
                 <div className='w-[30vw] h-[40vh] ml-[10%] object-contain flex flex-row gap-5 items-center mt-[10%]'>
-                  {/* <Suspense fallback="Loading..."> */}
-                    <Image priority src={WORKING} alt='about image' id="ripple-image"
-                      className="bg-image h-[28rem] w-[20vw] rounded-sm shadow-md shadow-baseCharcoal bg-no-repeat bg-cover "/>
-                    {/* <div id="ripple-image" className="ripple-image h-[55vh] w-[20vw] rounded-sm shadow-md shadow-baseCharcoal bg-no-repeat bg-cover "/> */}
-                    <div className="pt-[2.5rem]">
-                      <Image priority src={OPEN} alt='about image' className="h-[3.5rem] w-[3rem] "/>
-                    </div>
-                  {/* </Suspense> */}
+                  <Image priority src={WORKING} alt='about image' id="ripple-image"
+                    className="bg-image h-[28rem] w-[20vw] rounded-sm shadow-md shadow-baseCharcoal bg-no-repeat bg-cover "/>
+                  <div className="pt-[2.5rem]">
+                    <Image priority src={OPEN} alt='about image' className="h-[3.5rem] w-[3rem] "/>
+                  </div>
                 </div>
                 <div className='w-[30vw] h-[40vh] ml-[20%] absolute pt-[85%] flex flex-row gap-5 items-center justify-end pb-[20%]'>
-                  {/* <Suspense fallback="Loading..."> */}
-                    <div className="pt-[2.5rem]">
-                      <Image priority src={CLOSE} alt='about image' className="h-[5rem] w-[4.5rem] z-10 border-2 border-[black] rounded-lg"/>
-                    </div>
-                    <Image priority src={WORKING2} alt='about image' id="ripple-image-2"
-                      className="bg-image h-[24rem] w-[19vw] z-10 rounded-sm shadow-md shadow-baseCharcoal  bg-no-repeat bg-cover  "/>
-                  {/* </Suspense> */}
+                  <div className="pt-[2.5rem]">
+                    <Image priority src={CLOSE} alt='about image' className="h-[5rem] w-[4.5rem] z-10 border-2 border-[black] rounded-lg"/>
+                  </div>
+                  <Image priority src={WORKING2} alt='about image' id="ripple-image-2"
+                    className="bg-image h-[24rem] w-[19vw] z-10 rounded-sm shadow-md shadow-baseCharcoal  bg-no-repeat bg-cover  "/>
                 </div>
               </div>
               <div className="flex flex-col  pl-[10%] mt-[10%]" >
                 <Reveal transition={{duration: .75, delay: .5, ease: 'easeInOut'}}>
                   <h1 className="text-baseGrey text-7xl font-syne font-extrabold" >
-                  About
+                    About
                   </h1>
                 </Reveal>
                 <div className="w-[45vw] flex pl-[5%]">
@@ -75,38 +70,38 @@ const About = () => {
                   <div className="flex flex-row gap-[4vw]" >
                     <div className="flex justify-start py-[30px] h-[10vh] w-[20vw] flex-col text-baseCharcoal font-inter">   
                       <h3 className="font-extrabold text-baseGrey">
-                      Name:
+                        Name:
                       </h3> 
                       <p className="p-2 font-inter ">
-                      Mario A. Castro
+                        Mario A. Castro
                       </p>
                     </div>
                     <div className="flex justify-start py-[30px] h-[10vh] w-[20vw] flex-col text-baseCharcoal font-inter">   
                       <h3 className="font-extrabold text-baseGrey">
-                      Employment:
+                        Employment:
                       </h3> 
                       <p className="p-2 font-inter ">
-                      Open
+                        Open
                       </p>
                     </div>
                   </div>
                   <div className="flex flex-row gap-[4vw]" >
                     <div className="flex justify-start py-[30px] h-[10vh] w-[20vw] flex-col text-baseCharcoal font-inter">   
                       <h3 className="font-extrabold text-baseGrey">
-                      Email:
+                        Email:
                       </h3> 
                       <p className="p-2 font-inter ">
-                      Mcast2185@gmail.com
+                        Mcast2185@gmail.com
                       </p>
                     </div>
                     <div className="flex justify-start py-[30px] h-[10vh] w-[25vw] flex-col text-baseCharcoal font-inter">   
                       <h3 className="font-extrabold text-baseGrey">
-                      Education:
+                        Education:
                       </h3> 
                       <p className="p-2 font-inter ">
-                      Bottega University: Full-Stack Developer Certification 
+                        Bottega University: Full-Stack Developer Certification 
                       <br/>
-                      Google UX Certification (In progress)
+                        Google UX Certification (In progress)
                       </p>
                     </div>
                   </div>
@@ -123,9 +118,8 @@ const About = () => {
           </h3>
         </div>
       </div>
-      </div>
+    </div>
+  );
+};
 
-  )
-}
-
-export default About
+export default About;

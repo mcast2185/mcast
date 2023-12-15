@@ -106,9 +106,10 @@ html {
 
 #section {
   overflow-x: hidden;
-  padding-top: 1vh;
-  padding-bottom: 1vh;
+  padding-top: .5vh;
+  padding-bottom: .5vh;
   position: relative;
+  height: 15vh;
   width: 100vw;
 }
 // img {
@@ -135,12 +136,17 @@ html {
   // overflow-y: hidden;
   // overflow-x: hidden;
   // letter-spacing: -2px;
-  height: 10vh !important;
-  line-height: 0.5;
+  height: 7.5vh !important;
   margin: 0;
   white-space: nowrap;
   display: flex;
   flex-wrap: nowrap;
+
+}
+
+.scroller {
+
+  scroll-snap-type:proximity;
 }
 
 .parallax .scroller {
@@ -149,7 +155,3 @@ html {
   flex-wrap: nowrap;
 }
 
-.parallax #span {
-  display: block;
-  margin-right: 30px;
-}

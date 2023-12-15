@@ -1,4 +1,3 @@
-import Script from 'next/script';
 import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
 
@@ -25,7 +24,7 @@ export default function RootLayout({
       </head>
       <body className={`${inter.className} sm:min-w-[390px] 
         min-w-full flex min-h-full sm:p-0 sm:m-0`} >
-          <div >
+        <div >
           {children}
         </div>
       </body>

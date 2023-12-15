@@ -11,15 +11,15 @@ const Index = () => {
     <>
     <main className=" w-[100vw]" >
       <div>
-      <Background/>
-      <div className="w-[100vw]">
-        <Navbar/>
-        <Home/>
-        <About/>
-        <PageDivider/>
-        <Portfolio/>
-        <Contact />
-      </div>
+        <Background/>
+        <div className="w-[100vw]">
+          <Navbar/>
+          <Home/>
+          <About/>
+          <PageDivider/>
+          <Portfolio/>
+          <Contact />
+        </div>
       </div>
     </main>
     </>

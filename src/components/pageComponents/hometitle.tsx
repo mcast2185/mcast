@@ -129,6 +129,7 @@ const HomeTitle = () => {
         <section className="flex justify-end w-[100vw] 
           h-[100%] pr-[8vw] pt-[15vh]">
           <Image src={PRO}
+            priority
             role="img"
             alt="professional image"
             loading="eager"
@@ -137,7 +138,7 @@ const HomeTitle = () => {
         </section>
        </div>
     </div>
-  )
-}
+  );
+};
 
 export default HomeTitle;

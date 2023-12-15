@@ -13,8 +13,8 @@ import {
 } from "framer-motion";
 import { wrap } from "@motionone/utils";
 
-import { ArrangedImg, ArrangedImgTwo } from "../functionality/arrangedImg";
 import "../../styles/pageDivider.scss";
+import { ArrangedImg, ArrangedImgTwo } from "../functionality/arrangedImg";
 
 
 interface ParallaxProps {
@@ -52,12 +52,30 @@ function ParallaxText({ children, baseVelocity = 100 }: ParallaxProps) {
     baseX.set(baseX.get() + moveBy);
   });
 
+  // correcting the logic to pause animation on hover
+  // 
+  const hoverOver = () => {
+    let scrollOne = document.querySelector("#xAxisLeft")!.firstElementChild as HTMLElement;
+    scrollOne.style.contain = "inline-size";
+    scrollOne.scrollIntoView({ behavior: "smooth", block: "nearest", inline: "center" })
+    console.log(scrollOne);
+  }
+
+  const hoverOut = () => {
+    let scrollOne = document.querySelector("#xAxisLeft")!.firstElementChild!.firstElementChild as HTMLElement;
+    let css = " px-[20px]  hover_effect";
+
+    scrollOne.style.contain = "inline-size";
+    console.log(scrollOne);
+  }
+
+
   return (
     <div className="parallax">
       <AnimatePresence>
       <motion.div 
-        exit={{scaleX: 0}} className="scroller" style={{ x }}
-        whileInView={{scaleX: 1, overscrollBehaviorX: "contain"}}>
+        onHoverStart={() => hoverOver()}
+        className="scroller" style={{ x, transition:"ease-in-out" }}>
         {children} 
         {children} 
         {children} 
@@ -77,12 +95,12 @@ export default function PageDivider() {
   }, [isLoaded]);
     
   return (
-    <section id="section" >
+    <section id="section" className="w-[100vw]">
       {loaded === true && (
-        <ParallaxText baseVelocity={-1.7}>
+        <ParallaxText baseVelocity={-1.2}>
           <div id="xAxisLeft" className="flex flex-row">
               {ArrangedImg.map((img, index) =>
-                <div id={`skillImg_${index}`} key={index} >
+                <div id={`skillImg_${index}`} key={index} className=' mr-[40px] placeholder-opacity-90' >
                   {img }
                 </div>
               )}
@@ -90,7 +108,7 @@ export default function PageDivider() {
         </ParallaxText>
       )} 
       {loaded === true && (
-        <ParallaxText baseVelocity={2.2}>
+        <ParallaxText baseVelocity={1.5}>
           <div id="xAxisRight" className="flex flex-row">
             {ArrangedImgTwo.map((img, index) => 
               <div id={`skillImg_${index}`} key={index} >

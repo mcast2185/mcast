@@ -25,7 +25,7 @@ export const Reveal = ({ children, width ="fit-content", transition}: Props) => 
     <div ref={ref} style={{position: 'relative', width, overflow: 'hidden'}}>
       <motion.div
         variants={{
-          hidden: {opacity: 0, y: 50},
+          hidden: {opacity: -0.5, y: 50},
           visible: {opacity: 1, y: 0}
         }}
         initial="hidden"
@@ -45,7 +45,7 @@ export const Reveal = ({ children, width ="fit-content", transition}: Props) => 
         style={{
           position: 'absolute',
           top: 4,
-          bottom: 4,
+          bottom: 2,
           left: 0,
           right: 0,
           zIndex: 20,
