@@ -45,7 +45,7 @@ export const Reveal = ({ children, width ="fit-content", transition}: Props) => 
         style={{
           position: 'absolute',
           top: 4,
-          bottom: 2,
+          bottom: 0,
           left: 0,
           right: 0,
           zIndex: 20,

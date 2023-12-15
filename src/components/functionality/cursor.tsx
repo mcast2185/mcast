@@ -27,7 +27,7 @@ export const StyledCursor = ({children}: Props) => {
       });
     };
 
-    window.addEventListener("load",useOnHover);
+    window.addEventListener("load", useOnHover);
     window.addEventListener("mousemove", cursorCoordinates);
 
     // return window.removeEventListener("mousemove", cursorCoordinates);
