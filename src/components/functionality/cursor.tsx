@@ -1,66 +1,84 @@
 "use client";
-const {useEffect, useState} = require('react');
-const {useOnHover} = require("../hooks/onHover");
-const {motion, useAnimation} = require('framer-motion');
+import React, {useEffect, useRef} from 'react';
 
 
-interface Props {
-  children: JSX.Element;
-};
-// we need to read more on "const moveEvent = new PointerEvent("pointermove");"
-// to see how and where we should place there pointer events so that the page  
-// itself can trigger warnings for me to interact with, no longer the othger way around.
-//
-export const StyledCursor = ({children}: Props) => {
-  const cursorEventAnimation = useAnimation();
-  const [cursorVariant, isCursorVariant] = useState("default");
-  const [cursorTracker, isCursorTracker] = useState({
-    x: 0,
-    y: 0
+const Mouse = () => {
+  const Cursor = useRef<any>(null);
+  const secondCursor = useRef<any>(null);
+  const positionRef = useRef({
+    mouseX: 0,
+    mouseY: 0,
+    destinationX: 0,
+    destinationY: 0,
+    distanceX: 0,
+    distanceY: 0,
+    key: -1
   });
 
   useEffect(() => {
-    const cursorCoordinates = (ev: MouseEvent) => {
-      isCursorTracker({
-        x: ev.clientX,
-        y: ev.clientY
-      });
+    document.addEventListener("mousemove", event => {
+      const {clientX, clientY } = event;
+
+      const mouseX = clientX;
+      const mouseY = clientY;
+
+      positionRef!.current!.mouseX = mouseX - secondCursor!.current!.clientWidth/2;
+      positionRef!.current!.mouseY = mouseY - secondCursor!.current!.clientHeight/2;
+
+      Cursor!.current!.style!.transform = `translate3d(${mouseX -
+        Cursor!.current!.clientWidth / 2}px, ${mouseY -
+        Cursor!.current!.clientHeight / 2}px, 0)`;
+    });
+
+    return () => {};
+  }, []);
+
+  useEffect(() => {
+    const followMouse = () => {
+      positionRef!.current!.key = requestAnimationFrame(followMouse);
+
+      const {    
+        mouseX,
+        mouseY,
+        destinationX,
+        destinationY,
+        distanceX,
+        distanceY,
+        key } = positionRef!.current;
+      
+      if(!destinationX || !destinationY) {
+        positionRef!.current!.destinationX = mouseX;
+        positionRef!.current!.destinationY = mouseY;
+      } else {
+        positionRef!.current!.distanceX = (mouseX - destinationX) * .3;
+        positionRef!.current!.distanceY = (mouseY - destinationY) * .3;
+
+        if(Math.abs(positionRef!.current!.distanceX) + Math.abs(positionRef!.current!.distanceY) < .1 ) {
+          positionRef!.current!.destinationX = mouseX;
+          positionRef!.current!.destinationY = mouseY;
+        } else {
+          positionRef!.current!.destinationX += distanceX;
+          positionRef!.current!.destinationY += distanceY;
+        }
+      };
+
+      secondCursor!.current!.style!.transform = `translate3d(${destinationX}px, ${destinationY}px, 0)`;
     };
-
-    window.addEventListener("load", useOnHover);
-    window.addEventListener("mousemove", cursorCoordinates);
-
-    // return window.removeEventListener("mousemove", cursorCoordinates);
-  }, [useOnHover]);
-
-  const variants = {
-    default: {
-      x: cursorTracker.x - 18,
-      y: cursorTracker.y -18
-    },
-    animate: {
-      height: 150,
-      width: 150,
-      x: cursorTracker.x -75,
-      y: cursorTracker.y -75,
-      backgroundColor: "transparent"
-    }
-  };
-
-
-  const variantEnter = () => cursorEventAnimation.start("animate");
-  const variantLeave = () => cursorEventAnimation.start("default");
-
+    followMouse();
+  }, []);
 
   return (
-    // <div onMouseOver={variantEnter} onMouseOut={variantLeave} >
-      <motion.div 
-        initial="default"
-        variants={variants}
-        animate={cursorEventAnimation}  
-      >
-     {children}
-    </motion.div>
-    // </div>
-  );
-};
+    <React.StrictMode>
+      <div>
+        <div className="main-cursor " ref={Cursor}>
+          <div className="main-cursor-background"/>
+        </div>
+        <div className="secondary-cursor" ref={secondCursor}>
+          <div className="cursor-background"/>
+        </div>
+      </div>
+    </React.StrictMode>
+  )
+}
+
+export default Mouse;

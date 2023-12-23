@@ -1,3 +1,6 @@
+"use client";
+
+import { useEffect } from "react";
 
 const useHoverEffect = ((linkId: string) => {
 
@@ -16,11 +19,10 @@ const useHoverEffect = ((linkId: string) => {
     console.log('testing mouse leave')
   };
 
-
-  
+  useEffect(() => {
   const eventTrigger = () => {
     let arry: Element[] = [];
-
+   
     for (let i = 0; document.querySelector("#nav-container")!.children.length > i; i++) {
       let child = null;
       child = document.querySelector("#nav-container")!.children[i];
@@ -55,6 +57,7 @@ const useHoverEffect = ((linkId: string) => {
     
 
   return eventTrigger();
+  });
 
 });
 

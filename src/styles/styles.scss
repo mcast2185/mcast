@@ -1,5 +1,4 @@
 @import url('https://fonts.googleapis.com/css2?family=Petit+Formal+Script&family=Belanosima:wght@400;600;700&family=Work+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,700;1,800;1,900&family=Inter:wght@100;200;300;400;500&family=Syne:wght@400;500;600;700;800&family=Bodoni+Moda:ital,opsz,wght@0,6..96,400;0,6..96,500;0,6..96,700;0,6..96,900;1,6..96,400;1,6..96,500;1,6..96,900&family=Darker+Grotesque:wght@300;400;500;600;900&family=El+Messiri:wght@400;500;600;700&family=Jost:ital,wght@0,100;0,200;0,300;0,500;0,800;1,100;1,200;1,300;1,500;1,700;1,800&family=Kodchasan:ital,wght@0,200;0,300;0,400;0,500;0,600;1,200;1,300;1,400;1,500&family=Manrope:wght@200;300;400;600;700;800&family=Reem+Kufi:wght@500;600;700&family=Syncopate:wght@400;700&family=Unbounded:wght@200;300;400;500;600;700;800;900&family=Kalam:wght@700&family=Bubblegum+Sans&family=Permanent+Marker&family=Rubik+Vinyl&family=Alegreya+Sans:ital,wght@0,100;0,300;0,400;0,500;0,700;0,800;1,100;1,300;1,400;1,500;1,700;1,800&family=Fahkwang:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;1,200;1,300;1,400;1,500;1,600;1,700&family=Advent+Pro:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Montserrat+Alternates:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Philosopher:ital,wght@0,400;0,700;1,400;1,700&family=Major+Mono+Display&family=Megrim&family=Quicksand:wght@300&family=Montserrat+Subrayada:wght@400;700&family=Press+Start+2P&family=Rubik+Mono+One&family=Tenor+Sans&family=Julius+Sans+One&family=Thasadith:ital,wght@0,400;0,700;1,400;1,700&family=Anton&family=Oswald:wght@400;500;600;700&family=Bebas+Neue&display=swap');
-@import 'cursor';
 @import 'scrollContent.module';
 @import 'useHoverEffect';
 @import 'keyframe';
@@ -23,11 +22,143 @@ body {
   color: black;
   margin: 0;
   padding: 0;
+  // cursor: none;
+}
+
+
+.main-cursor,
+.secondary-cursor {
+  z-index: 10000;
+  pointer-events: none;
+  transform: translate3d(0, 0, 0);
+  position: fixed;
+  cursor: none;
+}
+
+.main-cursor {
+  transition: opacity 1s cubic-bezier(0.77, 0, 0.175, 1);
+  animation: fadeIn 1s cubic-bezier(0.77, 0, 0.175, 1) 0s forwards;
+  mix-blend-mode: difference;
+}
+
+.main-cursor-background {
+  width: 30px;
+  height: 30px;
+  background: #FF0303;
+  border-radius: 50%;
 
 }
 
-// .page-component {
-//   object-fit: contain;
-//   height: 100vh;
-//   width: 100vw;
-// }
+.secondary-cursor {
+  width: 60px;
+  height: 60px;
+}
+
+.cursor-background {
+  mix-blend-mode: difference;
+  filter: invert(1);
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  border: 1px solid #fff;
+  position: relative;
+}
+
+.cursor-background::after, 
+.cursor-background::before {
+  content: "";
+  // width: 3px;
+  // height: 3px;
+  border-radius: 50%;
+  background: white;
+  display: block;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  animation: fadeOut 0.75s cubic-bezier(0.77, 0, 0.175, 1) 0s forwards;
+}
+
+.cursor-background::before {
+  left: 10px;
+}
+
+.cursor-background::after {
+  right: 10px;
+}
+
+.slider-drag
+.cursor-background {
+  animation: scaleUp 1s cubic-bezier(0.77, 0, 0.175, 1) 0s forwards,
+  bgUp 1s cubic-bezier(0.77, 0, 0.175, 1) 0s forwards;
+}
+
+.slider-drag .cursor-background::after {
+  animation: fadeIn 1s cubic-bezier(0.77, 0, 0.175, 1) 0s forwards,
+    translateRightDot 1s cubic-bezier(0.77, 0, 0.175, 1) 0s forwards;
+}
+
+.slider-drag .cursor-background::before {
+  animation: fadeIn 1s cubic-bezier(0.77, 0, 0.175, 1) 0s forwards,
+    translateLeftDot 1s cubic-bezier(0.77, 0, 0.175, 1) 0s forwards;
+}
+
+.slider-drag .main-cursor {
+  animation: fadeOut 0.75s cubic-bezier(0.77, 0, 0.175, 1) 0s forwards;
+}
+
+
+
+.menu {
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  width: 400px;
+  background: var(--accent);
+  padding-top: 100px;
+  transform: translateX(-100%);
+  will-change: transform;
+}
+
+ul {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 15px;
+}
+
+li {
+  color: var(--background);
+  display: block;
+  transform-origin: -20px 50%;
+  font-weight: bold;
+  font-size: 48px;
+  padding: 10px;
+  will-change: transform, opacity, filter;
+}
+
+ul,
+li {
+  list-style: none;
+  margin: 0;
+}
+
+button {
+  outline: none;
+  border: none;
+  user-select: none;
+  -moz-user-select: none;
+  cursor: pointer;
+  position: absolute;
+  top: 18px;
+  left: 15px;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background: var(--accent);
+  padding: 10px;
+}
+
+button path {
+  fill: var(--background);
+}

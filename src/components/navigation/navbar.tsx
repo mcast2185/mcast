@@ -1,15 +1,20 @@
 'use client';
 import Image from 'next/image';
 import Link from 'next/link';
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import LOGO from '/public/static/images/devlogo.svg';
 import useHoverEffect from '../hooks/useHoverEffect';
-import { useScroll, motion, useTransform, useAnimation, useInView } from 'framer-motion';
+import { json } from 'stream/consumers';
 
+import { useScroll, motion, useTransform, useAnimation, useInView, addPointerEvent } from 'framer-motion';
 
 const Navbar = () => {
   const ref = useRef(null);
   const view = useInView(ref);
+  const [hovering, isHovering] = useState(false);
+  const [element, getElement] = useState({
+    el: "",
+  });
   const opacityAnimation = useAnimation();
   const {scrollYProgress} = useScroll({
     target: ref,
@@ -28,8 +33,26 @@ const Navbar = () => {
       scale: 1,
     }
   };
+  
+  const OverEffect = useHoverEffect;
+
+  const initiate = async (req: Request, res: Response) => {
+    let storedData = await fetch(req.cache).then(response => {
+      return response.body
+    });
+
+    let response = JSON.stringify(storedData);
+    res = JSON.parse(response);
+    console.log("response: ",res)
+    return res;
+  };
+
+  OverEffect(element.el !== "" ? element.el: "");
+  
   useEffect(()=> {
     document.querySelector("#home-header")!.setAttribute('ref', `${ref}`);
+    () => initiate
+
   },[]);
 
   return (
@@ -47,22 +70,22 @@ const Navbar = () => {
 
           <div className="w-[45vw] h-[100%] bg-[#ffffff] bg-opacity-95 drop-shadow shadow-[#5a5a5a] shadow-inner 
             rounded-[50px] flex flex-row content-center px-[10px] gap-[3.5rem] items-center justify-center" id="nav-container">
-            <Link onMouseEnter={() => useHoverEffect("home")} href="/" id="home" 
+            <Link onMouseLeave={(ev) => isHovering(false)} onMouseEnter={(ev) => { isHovering(true); getElement({el: ev.currentTarget.id}) }} href="/" id="home" 
             className="font-inter font-extralight text-[1.15rem] text-baseCharcoal rounded-[18px] overflow-hidden">
                 Home 
             </Link>
             <p id="divider" className="flex items-center text-xs py-5"> | </p> 
-            <Link onMouseEnter={() => useHoverEffect("about")} href="/about" id="about" 
+            <Link onMouseLeave={(ev) => isHovering(false)} onMouseEnter={(ev) => { isHovering(true); getElement({el: ev.currentTarget.id}) }} href="/about" id="about" 
               className="font-inter font-extralight text-[1.15rem] text-baseCharcoal rounded-[18px] overflow-hidden">
                 About
             </Link>
             <p id="divider" className="flex items-center text-xs py-5"> | </p> 
-            <Link onMouseEnter={() => useHoverEffect("portfolio")} href="/portfolio" id="portfolio" 
+            <Link onMouseLeave={(ev) => isHovering(false)} onMouseEnter={(ev) => { isHovering(true); getElement({el: ev.currentTarget.id}) }} href="/portfolio" id="portfolio" 
               className="font-inter font-extralight text-[1.15rem] text-baseCharcoal rounded-[18px] overflow-hidden">
                 Portfolio
             </Link>
             <p id="divider" className="flex items-center text-xs py-5"> | </p> 
-            <Link onMouseEnter={() => useHoverEffect("contact")} href="/contact" id="contact" 
+            <Link onMouseLeave={(ev) => isHovering(false)} onMouseEnter={(ev) => { isHovering(true); getElement({el: ev.currentTarget.id})}} href="/contact" id="contact" 
               className="font-inter font-extralight text-[1.15rem] text-baseCharcoal rounded-[18px] overflow-hidden">
                 Contact
             </Link>

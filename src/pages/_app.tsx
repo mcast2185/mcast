@@ -1,16 +1,13 @@
 import type { AppProps } from 'next/app';
-
+import { ThemeProvider } from 'next-themes';
 import "../styles/styles.scss";
-import { StyledCursor } from '@/components/functionality/cursor';
+
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
-    <div >
+    <ThemeProvider enableSystem={true} attribute="class">
       <Component {...pageProps} />
-      <StyledCursor>
-        <div className="styled_cursor"/>
-      </StyledCursor>
-    </div>
+    </ThemeProvider>
   );
 }
 

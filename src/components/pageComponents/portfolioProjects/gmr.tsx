@@ -31,13 +31,13 @@ const Gmr = () => {
   
   return (
     <div className='flex flex-row justify-start p-[1rem]' >
-      <div className='h-[30.5vh] w-[33vw] overflow-hidden bg-baseCharcoal bg-opacity-[.5] border border-baseCharcoal shadow-sm shadow-[#111]' >
+      <div className='h-[30.5vh] w-[33vw] overflow-hidden bg-baseCharcoal bg-opacity-[.65] border border-baseCharcoal shadow-sm shadow-[#111]' >
         <div className='h-[100%] flex flex-start' >
           <div className='img_wrapper_gmr h-[100%] flex justify-center object-contain items-center ease-in-out' onMouseOver={mouseOverEvent} onMouseOut={mouseOutEvent} >
             <Image id="gmrseat" src={GMR} alt="project img" className="h-[100%] w-[18.5vw] p-1 rounded-[10px] ease-in-out " />
             <div className="absolute flex justify-center items-center">
               <Link href="gmrseat.com" >
-                <h1 id="gmrseat_title" className='text-2xl font-extrabold font-syne ease-in-out text-baseBeige hover:decoration-solid hover:decoration-baseRed hover:decoration-[1px] opacity-0' >
+                <h1 id="gmrseat_title" className='text-2xl font-extrabold font-syne ease-in-out text-baseBeige  opacity-0' >
                   GMRseat
                 </h1>
               </Link>
@@ -63,7 +63,6 @@ const Gmr = () => {
                 left: 0,
                 right: 0,
                 top: 0,
-                bottom: 0,
                 position: "absolute"
               }}
             />
@@ -85,7 +84,7 @@ const Gmr = () => {
                   type: "spring"
                 }}
               >
-                <div className='h-[40%] mt-[65%] flex flex-col justify-start px-[20px] pb-[15px]' >
+                <div className='h-[40%] pt-[16%] flex flex-col justify-start px-[20px] pb-[15px]' >
                   <div className='flex flex-row gap-2 items-center ' >
                     <h1 className="text-lg font-light font-inter text-[#ffff]">
                       Website: 

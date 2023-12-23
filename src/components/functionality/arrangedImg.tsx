@@ -1,3 +1,4 @@
+'use client';
 import Image from 'next/image';
 import React, { ReactElement } from 'react';
 import HTML from "/public/static/images/html.png";
@@ -21,31 +22,61 @@ import GIT from "/public/static/images/Git.png";
 import NODE from "/public/static/images/Node.png";
 import SCSS from "/public/static/images/Scss.png";
 import EXP from "/public/static/images/Express.png";
+import { client } from '@/lib/sanity.client';
+import {Images} from '../../../typings';
 
+// type Props = {
+//   images: Images[];
+// };
+
+// const fetchedImagesPrimary = ({images}: Props) => {
+//   const primary = [];
+//   const secondary = [];
+//   images.map(img => {
+//     if (String(img.categories) === "Primary") primary.push(img);
+//     else if (String(img.categories) === "Secondary") secondary.push(img);
+//   })
+// }
 
   export const ArrangedImg: ReactElement[] = [
-    <Image priority blurDataURL="/public/static/images/html.png" className="!h-[85%] !w-[50%] mx-[80px]" src={HTML} alt='Framework' loading="eager"/>,
-    <Image priority blurDataURL="/public/static/images/css.png" className="!h-[85%] !w-[50%] mx-[80px]" src={CSS} alt='Framework' loading="eager"/>,
-    <Image priority blurDataURL="/public/static/images/JS.png" className="!h-[85%] !w-[50%] mx-[80px]" src={JS} alt='Framework' loading="eager"/>,
-    <Image priority blurDataURL="/public/static/images/react.png" className="!h-[85%] !w-[50%] mx-[80px]" src={REACT} alt='Framework' loading="eager"/>,
-    <Image priority blurDataURL="/public/static/images/next.png" className="!h-[85%] !w-[50%] mx-[80px]" src={NEXT} alt='Framework' loading="eager"/>,
-    <Image priority blurDataURL="/public/static/images/TS.png" className="!h-[85%] !w-[50%] mx-[80px]" src={TS} alt='Framework' loading="eager"/>,
-    <Image priority blurDataURL="/public/static/images/sanity.png" className="!h-[85%] !w-[50%] mx-[80px]" src={SANITY} alt='Framework' loading="eager"/>,
-    <Image priority blurDataURL="/public/static/images/Word.png" className="!h-[85%] !w-[50%] mx-[80px]" src={WORD} alt='Framework' loading="eager"/>,
-    <Image priority blurDataURL="/public/static/images/ionic.png" className="!h-[85%] !w-[50%] mx-[80px]" src={IONIC} alt='Framework' loading="eager"/>,
-    <Image priority blurDataURL="/public/static/images/python.png" className="!h-[85%] !w-[50%] mx-[80px]" src={PYTHON} alt='Framework' loading="eager"/>,
-    <Image priority blurDataURL="/public/static/images/mongo.png" className="!h-[85%] !w-[50%] mx-[80px]" src={MONGO} alt='Framework' loading="eager"/>,
+    <Image  className="!h-[85%] !w-[50%] mx-[80px]" src={HTML} alt='Framework' />,
+    <Image  className="!h-[85%] !w-[50%] mx-[80px]" src={CSS} alt='Framework' />,
+    <Image  className="!h-[85%] !w-[50%] mx-[80px]" src={JS} alt='Framework' />,
+    <Image  className="!h-[85%] !w-[50%] mx-[80px]" src={REACT} alt='Framework' />,
+    <Image  className="!h-[85%] !w-[50%] mx-[80px]" src={NEXT} alt='Framework' />,
+    <Image  className="!h-[85%] !w-[50%] mx-[80px]" src={TS} alt='Framework' />,
+    <Image  className="!h-[85%] !w-[50%] mx-[80px]" src={SANITY} alt='Framework' />,
+    <Image  className="!h-[85%] !w-[50%] mx-[80px]" src={WORD} alt='Framework' />,
+    <Image  className="!h-[85%] !w-[50%] mx-[80px]" src={IONIC} alt='Framework' />,
+    <Image  className="!h-[85%] !w-[50%] mx-[80px]" src={PYTHON} alt='Framework' />,
+    <Image  className="!h-[85%] !w-[50%] mx-[80px]" src={MONGO} alt='Framework' />,
   ];
 
   export const ArrangedImgTwo: ReactElement[] = [
-    <Image priority blurDataURL="/public/static/images/Cap.png" className="!h-[85%] !w-[30%] mx-[100px]" src={CAP} alt='Framework' loading="eager"/>,
-    <Image priority blurDataURL="/public/static/images/Tailwind.png" className="!h-[85%] !w-[30%] mx-[100px]" src={TAIL} alt='Framework' loading="eager"/>,
-    <Image priority blurDataURL="/public/static/images/Email.png" className="!h-[85%] !w-[30%] mx-[100px]" src={EMAIL} alt='Framework' loading="eager"/>,
-    <Image priority blurDataURL="/public/static/images/Figma.png" className="!h-[85%] !w-[30%] mx-[100px]" src={FIGMA} alt='Framework' loading="eager"/>,
-    <Image priority blurDataURL="/public/static/images/Fire.png" className="!h-[85%] !w-[30%] mx-[100px]" src={FIRE} alt='Framework' loading="eager"/>,
-    <Image priority blurDataURL="/public/static/images/Framer.png" className="!h-[85%] !w-[30%] mx-[100px]" src={FRAMER} alt='Framework' loading="eager"/>,
-    <Image priority blurDataURL="/public/static/images/Git.png" className="!h-[85%] !w-[30%] mx-[100px]" src={GIT} alt='Framework' loading="eager"/>,
-    <Image priority blurDataURL="/public/static/images/Node.png" className="!h-[85%] !w-[30%] mx-[100px]" src={NODE} alt='Framework' loading="eager"/>,
-    <Image priority blurDataURL="/public/static/images/Scss.png" className="!h-[85%] !w-[30%] mx-[100px]" src={SCSS} alt='Framework' loading="eager"/>,
-    <Image priority blurDataURL="/public/static/images/Express.png" className="!h-[85%] !w-[30%] mx-[100px]" src={EXP} alt='Framework' loading="eager"/>,
+    <Image  className="!h-[85%] !w-[30%] mx-[100px]" src={CAP} alt='Framework' />,
+    <Image  className="!h-[85%] !w-[30%] mx-[100px]" src={TAIL} alt='Framework' />,
+    <Image  className="!h-[85%] !w-[30%] mx-[100px]" src={EMAIL} alt='Framework' />,
+    <Image  className="!h-[85%] !w-[30%] mx-[100px]" src={FIGMA} alt='Framework' />,
+    <Image  className="!h-[85%] !w-[30%] mx-[100px]" src={FIRE} alt='Framework' />,
+    <Image  className="!h-[85%] !w-[30%] mx-[100px]" src={FRAMER} alt='Framework' />,
+    <Image  className="!h-[85%] !w-[30%] mx-[100px]" src={GIT} alt='Framework' />,
+    <Image  className="!h-[85%] !w-[30%] mx-[100px]" src={NODE} alt='Framework' />,
+    <Image  className="!h-[85%] !w-[30%] mx-[100px]" src={SCSS} alt='Framework' />,
+    <Image  className="!h-[85%] !w-[30%] mx-[100px]" src={EXP} alt='Framework' />,
   ];
+
+
+//   export async function getStaticProps() {
+//   const images = await client.fetch(`
+//     *[_type == "image"]{
+//       ...,
+//       categories[]->,
+//     } | order(_createdAt desc)
+//   `);
+
+//   return {
+//     props: {
+//       images
+//     }
+//   };
+// };

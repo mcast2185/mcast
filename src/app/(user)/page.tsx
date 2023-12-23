@@ -5,8 +5,19 @@ import PageDivider from '@/components/pageComponents/pageDivider';
 import Portfolio from '@/pages/portfolio';
 import Contact from '@/pages/contact';
 import Background from '@/components/pageComponents/background';
+import { client } from '@/lib/sanity.client';
+import { Images } from '../../../typings';
 
-const Index = () => {
+export const revalidate = 60;
+
+export const Index = async () => {
+  const images: Images[] = await client.fetch(`
+    *[_type == "images"]{
+      ...,
+      categories[]->,
+    } | order(_createdAt desc)
+  `);
+
   return (
     <>
     <main className=" w-[100vw]" >
@@ -15,8 +26,8 @@ const Index = () => {
         <div className="w-[100vw]">
           <Navbar/>
           <Home/>
+          <PageDivider images={images}/>
           <About/>
-          <PageDivider/>
           <Portfolio/>
           <Contact />
         </div>

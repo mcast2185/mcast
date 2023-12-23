@@ -9,13 +9,23 @@ import {
   useMotionValue,
   useVelocity,
   useAnimationFrame,
-  AnimatePresence
+  AnimatePresence,
+  useInView
 } from "framer-motion";
+// import Image from 'next/image';
 import { wrap } from "@motionone/utils";
 
 import "../../styles/pageDivider.scss";
 import { ArrangedImg, ArrangedImgTwo } from "../functionality/arrangedImg";
 
+import { Images } from '../../../typings';
+// import urlFor from '@/lib/urlFor';
+
+
+
+type Props = {
+  images: Images[];
+};
 
 interface ParallaxProps {
   children: string | React.ReactNode ;
@@ -34,7 +44,8 @@ function ParallaxText({ children, baseVelocity = 100 }: ParallaxProps) {
     clamp: true
   });
 
-  let x = useTransform(baseX, (v) => `${wrap(-25, -50, v)}%`);
+  // let x = useTransform(baseX, (v) => `${wrap(-25, -50, v)}%`);
+  let x = useTransform(baseX, (v) => `${wrap(-5, -15, v)}%`);
 
   const directionFactor = useRef<number>(1);
   useAnimationFrame((t, delta) => {
@@ -53,71 +64,83 @@ function ParallaxText({ children, baseVelocity = 100 }: ParallaxProps) {
   });
 
   // correcting the logic to pause animation on hover
-  // 
-  const hoverOver = () => {
-    let scrollOne = document.querySelector("#xAxisLeft")!.firstElementChild as HTMLElement;
-    scrollOne.style.contain = "inline-size";
-    scrollOne.scrollIntoView({ behavior: "smooth", block: "nearest", inline: "center" })
-    console.log(scrollOne);
-  }
+  
+  // useEffect(() => {
 
-  const hoverOut = () => {
-    let scrollOne = document.querySelector("#xAxisLeft")!.firstElementChild!.firstElementChild as HTMLElement;
-    let css = " px-[20px]  hover_effect";
-
-    scrollOne.style.contain = "inline-size";
-    console.log(scrollOne);
-  }
-
+  // })
 
   return (
     <div className="parallax">
       <AnimatePresence>
       <motion.div 
-        onHoverStart={() => hoverOver()}
         className="scroller" style={{ x, transition:"ease-in-out" }}>
         {children} 
         {children} 
-        {children} 
-        {children} 
+        {/* {children}  */}
+        {/* {children}  */}
       </motion.div>
     </AnimatePresence>
     </div>
   );
 };
 
-export default function PageDivider() {
-  const [loaded, isLoaded] = useState(false);
+export default function PageDivider({images}: Props) {
+  const ref = useRef(null)
+  const inView = useInView(ref)
+  const [visible, isVisible] = useState(false);
+  // let ArrangedImg: any = [];
+  // let ArrangedImgTwo: any = [];
 
+
+  // images.map((img) => {
+  //    if (img.categories[0].title === "Primary") ArrangedImg.push(img);
+  //    if (img.categories[0].title === "Secondary") ArrangedImgTwo.push(img);
+
+  // })
+ 
   useEffect(() => {
 
-    isLoaded(true);
-  }, [isLoaded]);
+
+
+
+
+    if (document.querySelector("#section")?.checkVisibility() !== true){
+      isVisible(false);
+    }
+    if (document.querySelector("#section")?.checkVisibility() === true) {
+      isVisible(true);
+    }
+
+  }, [isVisible]);
     
   return (
     <section id="section" className="w-[100vw]">
-      {loaded === true && (
+      {visible === true && (
         <ParallaxText baseVelocity={-1.2}>
           <div id="xAxisLeft" className="flex flex-row">
-              {ArrangedImg.map((img, index) =>
+              {ArrangedImg.map((img: any, index: number) =>
                 <div id={`skillImg_${index}`} key={index} className=' mr-[40px] placeholder-opacity-90' >
                   {img }
+                  {/* <Image ref={ref} priority src={img!.url} width={25} height={45} className="!h-[85%] !w-[50%] mx-[80px]" alt="" /> */}
                 </div>
               )}
           </div>
         </ParallaxText>
       )} 
-      {loaded === true && (
+      {visible === true && (
         <ParallaxText baseVelocity={1.5}>
           <div id="xAxisRight" className="flex flex-row">
-            {ArrangedImgTwo.map((img, index) => 
+            {ArrangedImgTwo.map((img: any, index: number) => 
               <div id={`skillImg_${index}`} key={index} >
                 {img}
+                {/* <Image priority src={urlFor(img!.url).url()} width={25} height={45} className="!h-[85%] !w-[30%] mx-[100px]" alt="" /> */}
               </div>
             )}
           </div>
         </ParallaxText>
-        )} 
+      )} 
+      {/* {visible !== true && <section id="section" className="w-[100vw]"/>} */}
+      {/* <FetchedImages images={images} /> */}
       </section>
   );
 };

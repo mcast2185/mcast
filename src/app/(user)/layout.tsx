@@ -1,9 +1,9 @@
 import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
 
-import Head from './head';
-
-import "../styles/styles.scss";
+import Head from '../head';
+import "../../styles/styles.scss";
+import Mouse from '@/components/functionality/cursor';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -24,6 +24,7 @@ export default function RootLayout({
       </head>
       <body className={`${inter.className} sm:min-w-[390px] 
         min-w-full flex min-h-full sm:p-0 sm:m-0`} >
+          <Mouse/>
         <div >
           {children}
         </div>
