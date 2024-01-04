@@ -69,6 +69,7 @@ h3 {
   height: 5px;
   width: 5px;
   background: #F9DBBB;
+  scroll-behavior: smooth;
 }
 
 ::-webkit-scrollbar-thumb {
@@ -78,10 +79,6 @@ h3 {
 
 ::-webkit-scrollbar-corner {
   background: #4E6E81;
-}
-
-html {
-  scroll-snap-type: y mandatory;
 }
 
 // h1 {
@@ -105,10 +102,13 @@ html {
 // }
 
 #section {
-  overflow-x: hidden;
-  padding-top: .5vh;
-  padding-bottom: .5vh;
-  position: relative;
+  // overflow-x: hidden;
+  margin-top: 1vh;
+  object-fit: contain;
+  // overflow: hidden;
+  // padding-top: .5vh;
+  // padding-bottom: .5vh;
+  // position: relative;
   height: 15vh;
   width: 100vw;
 }
@@ -133,9 +133,7 @@ html {
 
 
 .parallax {
-  // overflow-y: hidden;
-  // overflow-x: hidden;
-  // letter-spacing: -2px;
+  overflow: hidden;
   height: 7.5vh !important;
   margin: 0;
   white-space: nowrap;

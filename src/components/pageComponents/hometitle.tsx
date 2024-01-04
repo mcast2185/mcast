@@ -126,14 +126,14 @@ const HomeTitle = () => {
           </motion.div>
 
         </div>
-        <section className="flex justify-end w-[100vw] 
-          h-[100%] pr-[8vw] pt-[15vh]">
+        <section className="flex justify-end w-[100%] 
+          h-[80vh] pr-[8vw] pt-[15vh]">
           <Image src={PRO}
             priority
             role="img"
             alt="professional image"
             loading="eager"
-            className="h-[68vh] w-[38vw] opacity-90"
+            className=" opacity-90"
           />
         </section>
        </div>

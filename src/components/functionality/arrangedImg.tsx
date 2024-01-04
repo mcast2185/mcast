@@ -22,21 +22,8 @@ import GIT from "/public/static/images/Git.png";
 import NODE from "/public/static/images/Node.png";
 import SCSS from "/public/static/images/Scss.png";
 import EXP from "/public/static/images/Express.png";
-import { client } from '@/lib/sanity.client';
-import {Images} from '../../../typings';
 
-// type Props = {
-//   images: Images[];
-// };
 
-// const fetchedImagesPrimary = ({images}: Props) => {
-//   const primary = [];
-//   const secondary = [];
-//   images.map(img => {
-//     if (String(img.categories) === "Primary") primary.push(img);
-//     else if (String(img.categories) === "Secondary") secondary.push(img);
-//   })
-// }
 
   export const ArrangedImg: ReactElement[] = [
     <Image  className="!h-[85%] !w-[50%] mx-[80px]" src={HTML} alt='Framework' />,
@@ -64,19 +51,3 @@ import {Images} from '../../../typings';
     <Image  className="!h-[85%] !w-[30%] mx-[100px]" src={SCSS} alt='Framework' />,
     <Image  className="!h-[85%] !w-[30%] mx-[100px]" src={EXP} alt='Framework' />,
   ];
-
-
-//   export async function getStaticProps() {
-//   const images = await client.fetch(`
-//     *[_type == "image"]{
-//       ...,
-//       categories[]->,
-//     } | order(_createdAt desc)
-//   `);
-
-//   return {
-//     props: {
-//       images
-//     }
-//   };
-// };

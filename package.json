@@ -26,6 +26,7 @@
     "react": "^18.2.0",
     "react-bootstrap": "^2.9.1",
     "react-dom": "^18",
+    "react-router-dom": "^6.21.1",
     "react-simple-typewriter": "^5.0.1",
     "ripple-hover-effect": "^1.0.0",
     "sanity": "^3.21.3",
@@ -37,7 +38,6 @@
     "styled-components": "^6.1.1"
   },
   "devDependencies": {
-    "@types/jquery": "^3.5.29",
     "@sanity/eslint-config-studio": "^2.0.1",
     "@types/node": "^20",
     "@types/react": "^18",

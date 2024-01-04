@@ -3,14 +3,6 @@ import React from 'react';
 import ScrollFunction from './scrollFunction';
 
 
-// import { useScroll, useTransform, motion} from 'framer-motion';
-// import Image from 'next/image';
-// import Home from '../../pages/home';
-// import Lenis from '@studio-freight/lenis';
-// import useDimension from '@/components/hooks/useDimension';
-
-
-
 export const Projects = () => {
 
  return (

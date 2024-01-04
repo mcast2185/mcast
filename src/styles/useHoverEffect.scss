@@ -1,18 +1,18 @@
 
 .toggleAnimationOn {
-  animation: 1s ease-in-out;
+  animation: .5s ease-in-out;
   font-family: 'Inter' sans-serif;
   font-weight: 200;
   font-size: 1.15rem;
   color: #2E3840;
   opacity: 0.3;
-  transition-delay: 
-    scale 800ms 1s;
+  // transition-delay: 
+  //   scale 500ms .5s;
   transition: 
     opacity .75s;
 
   transition-property: all, opacity, transform, translate;
-  transition-duration: 800ms 800ms 800ms 800ms;
+  transition-duration: 500ms 500ms 500ms 500ms;
 
   // transform: scale(1, .05);
   transform: scale(.85, .95);
@@ -20,14 +20,14 @@
 }
 
 .toggleAnimationOff {
-  animation: 1.5s ease-in-out;
+  animation: .5s ease-in-out;
 
   font-family: 'Inter' sans-serif;
   font-weight: 200;
   font-size: 1.15rem;
   opacity: 1;
   transition-property: all, opacity, transform, translate;
-  transition-duration: 800ms 800ms 800ms 800ms;
+  transition-duration: 500ms 500ms 500ms 500ms;
   transition: ease-in-out;
   color: #2E3840;
   overflow: hidden;
@@ -55,7 +55,7 @@
     opacity .95s ease-in-out;
 
   transition-property: all, opacity, transform, translate;
-  transition-duration: 800ms 800ms 800ms 800ms;
+  transition-duration: 500ms 500ms 500ms 500ms;
 
 }
 #about {
@@ -63,7 +63,7 @@
     opacity .95s ease-in-out;
 
     transition-property: all, opacity, transform, translate;
-  transition-duration: 800ms 800ms 800ms 800ms;
+  transition-duration: 500ms 500ms 500ms 500ms;
 
 }
 #portfolio {
@@ -71,7 +71,7 @@
     opacity .95s ease-in-out;
 
     transition-property: all, opacity, transform, translate;
-  transition-duration: 800ms 800ms 800ms 800ms;
+  transition-duration: 500ms 500ms 500ms 500ms;
 
 }
 #contact {
@@ -79,6 +79,6 @@
     opacity .95s ease-in-out;
 
     transition-property: all, opacity, transform, translate;
-  transition-duration: 800ms 800ms 800ms 800ms;
+  transition-duration: 500ms 500ms 500ms 500ms;
 
 }

@@ -5,7 +5,7 @@ import BG from '/public/static/images/devbg.svg';
 const Background = () => {
   return (
     <div className="m-0 p-0
-      h-[100%] w-[100%] z-[-10] inset-0">
+       z-[-10] inset-0">
       <Image 
         src={BG} 
         role="img"  
@@ -18,7 +18,9 @@ const Background = () => {
           position: "fixed",
           zIndex: "-10",
           backgroundRepeat: "no-repeat",
-          backgroundSize: "cover"
+          backgroundSize: "cover",
+          height: "100vh",
+          width: "100vw"
         }} 
       />
       </div>

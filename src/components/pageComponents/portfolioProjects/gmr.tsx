@@ -1,13 +1,17 @@
 "use client";
 import Image from 'next/image';
-import React from 'react';
-import { motion, useAnimation } from 'framer-motion';
+import React, { useState } from 'react';
+import { AnimatePresence, motion, useAnimation } from 'framer-motion';
 import Link from 'next/link';
 
 import GMR from '/public/static/images/gmr.png';
 import GIT from '/public/static/images/Git.png';
+import Modal from '../modal';
 
 const Gmr = () => {
+  const [modalOpen, isModalOpen] = useState(false);
+  const close = () => isModalOpen(false);
+  const open = () => isModalOpen(true);
   const gmrAnimation = useAnimation();
   const infoAnimation = useAnimation();
 
@@ -30,43 +34,31 @@ const Gmr = () => {
   };
   
   return (
-    <div className='flex flex-row justify-start p-[1rem]' >
-      <div className='h-[30.5vh] w-[33vw] overflow-hidden bg-baseCharcoal bg-opacity-[.65] border border-baseCharcoal shadow-sm shadow-[#111]' >
-        <div className='h-[100%] flex flex-start' >
-          <div className='img_wrapper_gmr h-[100%] flex justify-center object-contain items-center ease-in-out' onMouseOver={mouseOverEvent} onMouseOut={mouseOutEvent} >
-            <Image id="gmrseat" src={GMR} alt="project img" className="h-[100%] w-[18.5vw] p-1 rounded-[10px] ease-in-out " />
-            <div className="absolute flex justify-center items-center">
-              <Link href="gmrseat.com" >
-                <h1 id="gmrseat_title" className='text-2xl font-extrabold font-syne ease-in-out text-baseBeige  opacity-0' >
-                  GMRseat
-                </h1>
-              </Link>
-            </div>
+    <div className=' p-[1rem]' >
+      <div id="gmr_wrapper" className='h-[30.5vh] w-[33vw] overflow-hidden bg-baseCharcoal bg-opacity-[.65] border border-baseCharcoal shadow-sm shadow-[#111]' >
+        <div className='h-[100%] flex' >
+          <div className='img_wrapper_gmr h-[100%] w-[50%]  ease-in-out' onMouseOver={mouseOverEvent} onMouseOut={mouseOutEvent} >
+            <motion.div
+              whileHover={{overflow: "hidden",scale: 1.05, position: "absolute"}}
+              whileTap={{scale: .9}}
+              onClick={()=> (modalOpen ? close() : open())}
+            >
+
+              <div className='flex justify-center h-[100%] w-[100%] items-center' >
+                <Image id="gmrseat" src={GMR} alt="project img" className="h-[100%] w-[18.5vw] p-[2.5px] object-contain overflow-hidden rounded-[10px] ease-in-out " />
+                <div className="absolute flex justify-center items-center ">
+                  <Link href="gmrseat.com" >
+                    <h1 id="gmrseat_title" className='text-2xl font-extrabold font-syne ease-in-out text-baseBeige h-[100%] w-[100%] opacity-0' >
+                      GMRseat
+                    </h1>
+                  </Link>
+                </div>
+              </div>
+
+            </motion.div>
           </div>
           <div className="w-[50%] h-[100%]">
-            <motion.div 
-              variants={variants}
-              initial="hidden"
-              animate={gmrAnimation}
-              transition={{
-                duration: "1.2",
-                type: "spring",
-              }}
-              style={{
-                height: "29.3vh",
-                borderRadius: "10px",
-                objectFit: "contain",
-                zIndex: -10,
-                marginTop: "2.5vh",
-                width: "17.6vw",
-                background: "#272727",
-                left: 0,
-                right: 0,
-                top: 0,
-                position: "absolute"
-              }}
-            />
-            <div className='flex justify-center items-center w-[100%]' >
+            <div className='flex justify-center items-center ' >
               <motion.div 
                 style={{
                   position: "absolute",
@@ -116,6 +108,12 @@ const Gmr = () => {
           </div>
         </div>
       </div>
+      {/* <AnimatePresence
+        initial={false}
+        mode="wait"
+      >
+        {modalOpen && <Modal modalOpen={modalOpen} handleClose={close} />}
+      </AnimatePresence> */}
     </div>
   );
 };

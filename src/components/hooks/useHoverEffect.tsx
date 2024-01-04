@@ -16,7 +16,6 @@ const useHoverEffect = ((linkId: string) => {
       child.className = "toggleAnimationOff";
       document.querySelectorAll("#divider").forEach(child => child.className ="toggleAnimationOff");
     })
-    console.log('testing mouse leave')
   };
 
   useEffect(() => {
@@ -24,7 +23,7 @@ const useHoverEffect = ((linkId: string) => {
     let arry: Element[] = [];
    
     for (let i = 0; document.querySelector("#nav-container")!.children.length > i; i++) {
-      let child = null;
+      let child;
       child = document.querySelector("#nav-container")!.children[i];
 
       if (arry.length >= 4 ) {
@@ -36,7 +35,6 @@ const useHoverEffect = ((linkId: string) => {
           continue;
         } else {
           arry.push(child);
-          console.log(`child element #${i} pushed: `);
         };
       };
 

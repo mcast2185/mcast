@@ -4,11 +4,20 @@ import Link from 'next/link';
 import React, { useEffect, useRef, useState } from 'react';
 import LOGO from '/public/static/images/devlogo.svg';
 import useHoverEffect from '../hooks/useHoverEffect';
-import { json } from 'stream/consumers';
 
-import { useScroll, motion, useTransform, useAnimation, useInView, addPointerEvent } from 'framer-motion';
+
+import { useScroll, motion, useTransform, useAnimation, useInView, AnimatePresence } from 'framer-motion';
+import { useLocation } from 'react-router-dom';
+import Home from '@/pages/home';
+import About from '@/pages/about';
+import Portfolio from '@/pages/portfolio';
+import Contact from '@/pages/contact';
+import { withRouter } from 'next/router';
+import Lenis from '@studio-freight/lenis';
 
 const Navbar = () => {
+  // const {scroll} = useScroll();
+
   const ref = useRef(null);
   const view = useInView(ref);
   const [hovering, isHovering] = useState(false);
@@ -20,6 +29,7 @@ const Navbar = () => {
     target: ref,
     offset: ["0 .33", "end start"],
   });
+  
   const opacity = useTransform(scrollYProgress, [0, .19], [3.8, 0]);
   const scale = useTransform(scrollYProgress, [0, .55], [1.12, 0]);
   const opacityControl = {
@@ -33,34 +43,37 @@ const Navbar = () => {
       scale: 1,
     }
   };
-  
+
+
   const OverEffect = useHoverEffect;
 
-  const initiate = async (req: Request, res: Response) => {
-    let storedData = await fetch(req.cache).then(response => {
-      return response.body
-    });
+  // useEffect(() => {
+  //   const lenis = new Lenis();
 
-    let response = JSON.stringify(storedData);
-    res = JSON.parse(response);
-    console.log("response: ",res)
-    return res;
-  };
+  //   function raf(time: any) {
+  //     lenis.raf(time);
+  //     requestAnimationFrame(raf);
+  //   };
+
+  //   requestAnimationFrame(raf);
+
+  // }, []);
 
   OverEffect(element.el !== "" ? element.el: "");
   
   useEffect(()=> {
-    document.querySelector("#home-header")!.setAttribute('ref', `${ref}`);
-    () => initiate
+    document.body.querySelector("#home-header")?.setAttribute('ref', `${ref}`);
+    // () => initiate
 
   },[]);
 
   return (
-    <div className="absolute z-10 mb-[10%]">
+    <div id="navbar_header" className="absolute z-10 mb-[10%] scroll-smooth">
       <div className="w-[100vw] flex" >
         <div className="flex flex-start mt-[-15px] h-[140px]" >
           <Image src={LOGO} alt="" className="h-[100%] w-[17.5vw] "/>
         </div>
+        <AnimatePresence mode="wait">
         <motion.div className="w-[100%] h-[80px] pt-6 items-center fixed flex overflow-hidden justify-center"
           style={{ opacity, scale}}
           animate={opacityAnimation}
@@ -70,28 +83,29 @@ const Navbar = () => {
 
           <div className="w-[45vw] h-[100%] bg-[#ffffff] bg-opacity-95 drop-shadow shadow-[#5a5a5a] shadow-inner 
             rounded-[50px] flex flex-row content-center px-[10px] gap-[3.5rem] items-center justify-center" id="nav-container">
-            <Link onMouseLeave={(ev) => isHovering(false)} onMouseEnter={(ev) => { isHovering(true); getElement({el: ev.currentTarget.id}) }} href="/" id="home" 
+            <Link onMouseLeave={(ev) => isHovering(false)} onMouseEnter={(ev) => { isHovering(true); getElement({el: ev.currentTarget.id}) }} href="#home_page" id="home" 
             className="font-inter font-extralight text-[1.15rem] text-baseCharcoal rounded-[18px] overflow-hidden">
                 Home 
             </Link>
             <p id="divider" className="flex items-center text-xs py-5"> | </p> 
-            <Link onMouseLeave={(ev) => isHovering(false)} onMouseEnter={(ev) => { isHovering(true); getElement({el: ev.currentTarget.id}) }} href="/about" id="about" 
+            <Link onMouseLeave={(ev) => isHovering(false)} onMouseEnter={(ev) => { isHovering(true); getElement({el: ev.currentTarget.id}) }} href="#about_page" id="about" 
               className="font-inter font-extralight text-[1.15rem] text-baseCharcoal rounded-[18px] overflow-hidden">
                 About
             </Link>
             <p id="divider" className="flex items-center text-xs py-5"> | </p> 
-            <Link onMouseLeave={(ev) => isHovering(false)} onMouseEnter={(ev) => { isHovering(true); getElement({el: ev.currentTarget.id}) }} href="/portfolio" id="portfolio" 
+            <Link onMouseLeave={(ev) => isHovering(false)} onMouseEnter={(ev) => { isHovering(true); getElement({el: ev.currentTarget.id}) }} href="#portfolio_page" id="portfolio" 
               className="font-inter font-extralight text-[1.15rem] text-baseCharcoal rounded-[18px] overflow-hidden">
                 Portfolio
             </Link>
             <p id="divider" className="flex items-center text-xs py-5"> | </p> 
-            <Link onMouseLeave={(ev) => isHovering(false)} onMouseEnter={(ev) => { isHovering(true); getElement({el: ev.currentTarget.id})}} href="/contact" id="contact" 
+            <Link onMouseLeave={(ev) => isHovering(false)} onMouseEnter={(ev) => { isHovering(true); getElement({el: ev.currentTarget.id})}} href="#contact_page" id="contact" 
               className="font-inter font-extralight text-[1.15rem] text-baseCharcoal rounded-[18px] overflow-hidden">
                 Contact
             </Link>
           </div>
 
         </motion.div>
+        </AnimatePresence>
       </div>
     </div>
   );

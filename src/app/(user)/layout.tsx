@@ -5,6 +5,7 @@ import Head from '../head';
 import "../../styles/styles.scss";
 import Mouse from '@/components/functionality/cursor';
 
+
 const inter = Inter({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
@@ -15,7 +16,7 @@ export const metadata: Metadata = {
 export default function RootLayout({
   children,
 }: {
-  children: React.ReactNode
+  children: React.ReactNode 
 }) {
   return (
     <html lang="en">
@@ -24,8 +25,8 @@ export default function RootLayout({
       </head>
       <body className={`${inter.className} sm:min-w-[390px] 
         min-w-full flex min-h-full sm:p-0 sm:m-0`} >
-          <Mouse/>
-        <div >
+        <Mouse/>
+        <div id="root" >
           {children}
         </div>
       </body>

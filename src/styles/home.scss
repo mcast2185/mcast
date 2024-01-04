@@ -2,6 +2,7 @@
   // background-color: #2E3840;
   height: 100vh;
   width: 100vw;
+  object-fit: contain;
 }
 
 .home-desc {
@@ -11,8 +12,9 @@
 
 .home-row {
   height: 100%;
-  width: 100%;
+  width: 100vw;
   display: grid;
   grid-template-columns: .85fr 1fr;
   position: relative;
+  padding-top: 8vh;
 }

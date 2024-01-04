@@ -4,6 +4,14 @@ const path = require('path');
 const projectId = String(process.env.NEXT_PUBLIC_SANITY_PROJECT_ID);
 
 const nextConfig = {
+  async rewrites() {
+    return [
+      {
+        source: '/:any*',
+        destination: '/',
+      },
+    ];
+  },
   reactStrictMode: true,
   projectId: projectId,
   experimental: {
