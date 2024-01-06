@@ -1,6 +1,5 @@
 import { customData } from '@/types/customData';
 import React from 'react';
-import ScrollFunction from './scrollFunction';
 
 
 export const Projects = () => {

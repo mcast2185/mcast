@@ -2,9 +2,9 @@ import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
 
 import Head from '../head';
-import "../../styles/styles.scss";
 import Mouse from '@/components/functionality/cursor';
 
+import "../../styles/styles.scss";
 
 const inter = Inter({ subsets: ['latin'] });
 

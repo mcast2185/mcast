@@ -2,24 +2,21 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import React, { useEffect, useRef, useState } from 'react';
+import { 
+  useScroll, 
+  motion, 
+  useTransform, 
+  useAnimation, 
+  AnimatePresence 
+} from 'framer-motion';
+
+
 import LOGO from '/public/static/images/devlogo.svg';
 import useHoverEffect from '../hooks/useHoverEffect';
 
 
-import { useScroll, motion, useTransform, useAnimation, useInView, AnimatePresence } from 'framer-motion';
-import { useLocation } from 'react-router-dom';
-import Home from '@/pages/home';
-import About from '@/pages/about';
-import Portfolio from '@/pages/portfolio';
-import Contact from '@/pages/contact';
-import { withRouter } from 'next/router';
-import Lenis from '@studio-freight/lenis';
-
 const Navbar = () => {
-  // const {scroll} = useScroll();
-
   const ref = useRef(null);
-  const view = useInView(ref);
   const [hovering, isHovering] = useState(false);
   const [element, getElement] = useState({
     el: "",
@@ -64,7 +61,6 @@ const Navbar = () => {
   useEffect(()=> {
     document.body.querySelector("#home-header")?.setAttribute('ref', `${ref}`);
     // () => initiate
-
   },[]);
 
   return (

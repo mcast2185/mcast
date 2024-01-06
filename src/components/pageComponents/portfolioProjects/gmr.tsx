@@ -1,17 +1,31 @@
 "use client";
 import Image from 'next/image';
-import React, { useState } from 'react';
+import React, {  useState } from 'react';
 import { AnimatePresence, motion, useAnimation } from 'framer-motion';
 import Link from 'next/link';
 
 import GMR from '/public/static/images/gmr.png';
 import GIT from '/public/static/images/Git.png';
-import Modal from '../modal';
+import { reducer } from '@/components/functionality/reducer';
+import { useGlobalState } from '@/components/functionality/globalState';
+// import Modal from '../modal';
+
+
 
 const Gmr = () => {
+  const {state, dispatch} = useGlobalState();
   const [modalOpen, isModalOpen] = useState(false);
-  const close = () => isModalOpen(false);
-  const open = () => isModalOpen(true);
+
+  const close = () => {
+    isModalOpen(false);
+    dispatch({ type: 'MODAL_IS_NOT_ACTIVE', modalState: modalOpen});
+  };
+  
+  const open = () => {
+    isModalOpen(true);
+    dispatch({ type: 'MODAL_IS_ACTIVE', modalState: modalOpen});
+  };
+
   const gmrAnimation = useAnimation();
   const infoAnimation = useAnimation();
 
@@ -39,13 +53,14 @@ const Gmr = () => {
         <div className='h-[100%] flex' >
           <div className='img_wrapper_gmr h-[100%] w-[50%]  ease-in-out' onMouseOver={mouseOverEvent} onMouseOut={mouseOutEvent} >
             <motion.div
-              whileHover={{overflow: "hidden",scale: 1.05, position: "absolute"}}
+              className="h-[100%] w-[100%]"
+              whileHover={{scale: 1.05}}
               whileTap={{scale: .9}}
               onClick={()=> (modalOpen ? close() : open())}
             >
 
               <div className='flex justify-center h-[100%] w-[100%] items-center' >
-                <Image id="gmrseat" src={GMR} alt="project img" className="h-[100%] w-[18.5vw] p-[2.5px] object-contain overflow-hidden rounded-[10px] ease-in-out " />
+                <Image id="gmrseat" src={GMR} alt="project img" className="h-[100%] w-[18.5vw] p-[2.5px] overflow-hidden rounded-[10px] ease-in-out " />
                 <div className="absolute flex justify-center items-center ">
                   <Link href="gmrseat.com" >
                     <h1 id="gmrseat_title" className='text-2xl font-extrabold font-syne ease-in-out text-baseBeige h-[100%] w-[100%] opacity-0' >

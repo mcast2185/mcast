@@ -8,36 +8,26 @@ import PageDivider from '@/components/pageComponents/pageDivider';
 import Portfolio from '@/pages/portfolio';
 import Contact from '@/pages/contact';
 import Background from '@/components/pageComponents/background';
-import Page from '@/components/page';
 
-// here we are attempting to use page transitions
-// maybe nest everything here or in layout
-// or do logic through layout file
 
 export const Index = async () => {
   return (
   <>
-    {/* <Page> */}
-    {/* <main className="flex items-center p-0 m-0 w-[100vw]" >
+    <Background/>
+    <div className=" overflow-hidden">
+      <Navbar/> 
       <div>
         <Background/>
         <div className=" overflow-hidden">
-      <Navbar/> */}
-      <div>
-      <Background/>
-      <div className=" overflow-hidden">
           <Navbar/>
-          <Page><Home/></Page>
-          <Page><About/></Page>
+          <Home/>
+          <About/>
           <PageDivider/>
-          <Page><Portfolio/></Page>
-          <Page><Contact /></Page>
-          </div>
-          </div>
-        {/* </div>
+          <Portfolio/>
+          <Contact />
+        </div>
       </div>
-    </main> */}
-    {/* </Page> */}
+    </div>
     </>
   );
 

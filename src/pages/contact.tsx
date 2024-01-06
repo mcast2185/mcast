@@ -17,16 +17,15 @@ const Contact = () => {
         whileInView={{ y: "0%", opacity: 1 }}
         exit={{ opacity: 1 }}
       >
-
         <div id="contact_page" className="w-[100vw] h-[100vh] flex justify-center py-[10vh]">
-      <div className="border-t-[0px] border-baseRed border-l-[0px] border-r-[2px] border-b-[2px] w-[80%] bg-[#fff] rounded-xl shadow-lg shadow-baseCharcoal ">
-       <div className=" border border-baseCharcoal" >
-        
-       </div>
-      </div>
-    </div>
-        </motion.main>
+          <div className="border-t-[0px] border-baseRed border-l-[0px] border-r-[2px] border-b-[2px] w-[80%] bg-[#fff] rounded-xl shadow-lg shadow-baseCharcoal ">
+            <div className=" border border-baseCharcoal" >
+              
+            </div>
+          </div>
         </div>
+      </motion.main>
+    </div>
   )
 }
 

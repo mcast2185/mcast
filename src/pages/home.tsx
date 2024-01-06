@@ -4,7 +4,7 @@ import Head from 'next/head';
 import { motion } from 'framer-motion';
 
 import HomeTitle from '@/components/pageComponents/hometitle';
-import Page from '@/components/page';
+// import Page from '@/components/page';
 
 const Home = () => {
 
@@ -16,20 +16,19 @@ const Home = () => {
       exit={{opacity: 1}}
       transition={{duration: .75, ease: "easeInOut"}}
     >
-    <Head>
-      <title>
-        Mcast:Dev
-      </title>
-      <meta name='description' content='Software-Developer Online Portfolio'/>
-    </Head>
-    <main>
-      <div id="home_page" className="home-component">
-        <div>
-          <HomeTitle/>
+      <Head>
+        <title>
+          Mcast:Dev
+        </title>
+        <meta name='description' content='Software-Developer Online Portfolio'/>
+      </Head>
+      <main>
+        <div id="home_page" className="home-component">
+          <div>
+            <HomeTitle/>
+          </div>
         </div>
-      </div>
-
-    </main>
+      </main>
     </motion.div>
     // </Page>
   );
