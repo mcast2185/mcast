@@ -1,7 +1,6 @@
 import { motion } from 'framer-motion';
 import Head from 'next/head';
 import React from 'react';
-// import Transition from '../transition';
 
 const Contact = () => {
   return (
@@ -26,7 +25,7 @@ const Contact = () => {
         </div>
       </motion.main>
     </div>
-  )
-}
+  );
+};
 
 export default Contact;

@@ -6,32 +6,30 @@ import Link from 'next/link';
 
 import GMR from '/public/static/images/gmr.png';
 import GIT from '/public/static/images/Git.png';
-import { reducer } from '@/components/functionality/reducer';
-import { useGlobalState } from '@/components/functionality/globalState';
+import { useAppDispatch, useAppSelector } from '@/lib/hooks';
 // import Modal from '../modal';
 
 
 
 const Gmr = () => {
-  const {state, dispatch} = useGlobalState();
   const [modalOpen, isModalOpen] = useState(false);
+  const gmrAnimation = useAnimation();
+  const infoAnimation = useAnimation();
+  const variantInfo = { hidden: { x: -50, opacity: 0 }, visible: { x: 0, opacity: 1 } };
+
 
   const close = () => {
     isModalOpen(false);
-    dispatch({ type: 'MODAL_IS_NOT_ACTIVE', modalState: modalOpen});
+    useAppDispatch({ type: 'MODAL_IS_NOT_ACTIVE', state: modalOpen}, []);
   };
   
   const open = () => {
     isModalOpen(true);
-    dispatch({ type: 'MODAL_IS_ACTIVE', modalState: modalOpen});
+    useAppDispatch({ type: 'MODAL_IS_ACTIVE', state: modalOpen}, []);
+    let storeState = useAppSelector(current => current.state);
+
+    console.log("onclick open, store should be true: ", storeState)
   };
-
-  const gmrAnimation = useAnimation();
-  const infoAnimation = useAnimation();
-
-
-  const variants = {hidden: {opacity: 0, left: 0 }, visible: {opacity: 1, left: "16vw"}};
-  const variantInfo = {hidden: {x: -50, opacity: 0}, visible: {x: 0, opacity: 1}};
 
   const mouseOverEvent = () => {
     (document.querySelector("#gmrseat") as HTMLElement).style.filter = "brightness(35%)";
@@ -57,8 +55,7 @@ const Gmr = () => {
               whileHover={{scale: 1.05}}
               whileTap={{scale: .9}}
               onClick={()=> (modalOpen ? close() : open())}
-            >
-
+              >
               <div className='flex justify-center h-[100%] w-[100%] items-center' >
                 <Image id="gmrseat" src={GMR} alt="project img" className="h-[100%] w-[18.5vw] p-[2.5px] overflow-hidden rounded-[10px] ease-in-out " />
                 <div className="absolute flex justify-center items-center ">

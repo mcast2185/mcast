@@ -1,4 +1,4 @@
-import { AnimatePresence, motion } from 'framer-motion';
+import { AnimatePresence } from 'framer-motion';
 import type { AppProps } from 'next/app';
 
 
@@ -8,9 +8,8 @@ import StoreProvider from '@/app/storeProvider';
 import "../styles/styles.scss";
 
 const MyApp = ({ Component, pageProps }: AppProps) => {
-
   return (
-    <StoreProvider>
+    <StoreProvider >
       <AnimatePresence mode="wait">
         <Navbar />
         <Component {...pageProps} />

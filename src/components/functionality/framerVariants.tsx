@@ -39,4 +39,4 @@ export const dropIn = {
     y: "100vh",
     opacity: 0
   }
-}
+};

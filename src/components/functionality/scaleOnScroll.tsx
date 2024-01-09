@@ -7,18 +7,14 @@ type Props = {
   children: React.JSX.Element | React.ReactNode
 }
 
-// evaluate what other properties need to be added to make a smoother transition for the stagger effect
-// look into the easing function that we read on framers documentation, 
-
 const ScaleOnScroll = ({children}: Props) => {
-
 
   useEffect(() => {
     const lenis = new Lenis();
 
     function raf(time: any) {
-      lenis.raf(time)
-      requestAnimationFrame(raf)
+      lenis.raf(time);
+      requestAnimationFrame(raf);
     };
 
     requestAnimationFrame(raf);

@@ -10,10 +10,10 @@ import GPR from '/public/static/images/gpr.png';
 const Gpr = () => {
   const gprAnimation = useAnimation();
   const detailsAnimation = useAnimation();
-
-
-  const variants = {hidden: {opacity: 0, left: 0 }, visible: {opacity: 1, left: "16vw"}};
   const variantDetails = {hidden: {x: -50, opacity: 0}, visible: {x: 0, opacity: 1}};
+
+
+
 
   const mouseOverEvent = () => {
     (document.querySelector("#gprconst") as HTMLElement).style.filter = "brightness(35%)";

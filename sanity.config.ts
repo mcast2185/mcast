@@ -1,6 +1,6 @@
-import {visionTool} from '@sanity/vision'
-import {defineConfig} from 'sanity'
-import {deskTool} from 'sanity/desk'
+import {visionTool} from '@sanity/vision';
+import {defineConfig} from 'sanity';
+import {deskTool} from 'sanity/desk';
 import {unsplashImageAsset} from 'sanity-plugin-asset-source-unsplash';
 
 import { getDefaultDocumentNode } from './structure';

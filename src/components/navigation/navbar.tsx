@@ -26,9 +26,9 @@ const Navbar = () => {
     target: ref,
     offset: ["0 .33", "end start"],
   });
-  
   const opacity = useTransform(scrollYProgress, [0, .19], [3.8, 0]);
   const scale = useTransform(scrollYProgress, [0, .55], [1.12, 0]);
+  const OverEffect = useHoverEffect;
   const opacityControl = {
     hidden: {
       opacity: 0,
@@ -41,26 +41,12 @@ const Navbar = () => {
     }
   };
 
-
-  const OverEffect = useHoverEffect;
-
-  // useEffect(() => {
-  //   const lenis = new Lenis();
-
-  //   function raf(time: any) {
-  //     lenis.raf(time);
-  //     requestAnimationFrame(raf);
-  //   };
-
-  //   requestAnimationFrame(raf);
-
-  // }, []);
-
   OverEffect(element.el !== "" ? element.el: "");
-  
+
+
   useEffect(()=> {
     document.body.querySelector("#home-header")?.setAttribute('ref', `${ref}`);
-    // () => initiate
+
   },[]);
 
   return (

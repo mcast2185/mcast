@@ -1,5 +1,5 @@
 "use client";
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import Link from 'next/link';
 import Head from 'next/head';
 import { AnimatePresence, motion } from 'framer-motion';
@@ -9,11 +9,37 @@ import { Reveal } from '@/components/functionality/reveal';
 import Gmr from '@/components/pageComponents/portfolioProjects/gmr';
 import Gpr from '@/components/pageComponents/portfolioProjects/gpr';
 import Modal from '@/components/pageComponents/modal';
-import { useGlobalState } from '@/components/functionality/globalState';
+import { useAppDispatch, useAppSelector, useAppStore } from '@/lib/hooks';
+import { AppStore, RootState } from '@/lib/store';
+import { StateTree } from 'sanity';
 
+// store.subscribe(
+//   state => console.log(state),
+//   (previousState, state) => previousState.something !== state.something
+// );
 
 const Portfolio = () => {
-  const {state, dispatch} = useGlobalState();
+  const [currentState, setCurrentState] = useState(false);
+
+  const observeStore = (store: AppStore, onChange: (el: any)=> any) => {
+
+    function handleChange() {
+      let nextState = useAppSelector(state => state.state);
+      console.log("nextstate: ",nextState);
+      // let nextState = select(store.getState());
+      if (nextState !== currentState) {
+        setCurrentState(nextState);
+        onChange(currentState);
+        console.log("currentstate: ", currentState);
+      };
+    };
+
+    let unsubscribe = store.subscribe(handleChange);
+    handleChange();
+    return unsubscribe;
+  };
+
+  currentState && observeStore(useAppStore(), (currentState)=> {currentState});
 
   return (
     <div className="border border-[#ffff] border-r-0 border-l-0 border-t-0">
@@ -29,7 +55,7 @@ const Portfolio = () => {
         exit={{ opacity: 1 }}
         transition={{ duration: .75, ease: "easeInOut" }}
         className=' h-[100vh] w-[100vw]'
-      >
+        >
         <div id="portfolio_page" className="h-[100%] flex flex-col pb-[30%] mb-[30%]">
           <div className=" w-[100%] h-[100%] flex flex-col ">
 
@@ -54,7 +80,7 @@ const Portfolio = () => {
             </div>
           </div>
           <div className='flex justify-start w-[20%] h-[100%] mt-[35%] mb-[30%] ml-[2vw] pl-[1vw] border-baseBeige border border-r-0 border-l-0 border-t-0' >
-            <Link href={"/"} onMouseOver={()=> console.log(state)}>
+            <Link href={"/"} onMouseOver={()=> console.log("")}>
               <h3 className="font-Inter text-baseBeige text-2xl font-extrabold hover:decoration-baseRed decoration-baseRed
                 transition hover:underline decoration-solid ease-in-out hover:scale-[1.05]">
                 More...
@@ -63,15 +89,16 @@ const Portfolio = () => {
           </div>
         </div>
       </motion.main>
-      {(state.type === 'MODAL_IS_ACTIVE' && state.modalState === true) && 
+
       <AnimatePresence
         initial={false}
         mode="wait"
       >
-        {state && <Modal modalOpen={state} handleClose={() => 
-          dispatch({ type: 'MODAL_IS_NOT_ACTIVE', modalState: state})} 
+        {currentState && <Modal modalOpen={currentState} handleClose={() => {
+          setCurrentState(false);
+          useAppDispatch({ type: 'MODAL_IS_NOT_ACTIVE', state: currentState}, [])}} 
         />}
-      </AnimatePresence>}
+      </AnimatePresence>
     </div>
   );
 };

@@ -10,7 +10,8 @@ import Contact from '@/pages/contact';
 import Background from '@/components/pageComponents/background';
 
 
-export const Index = async () => {
+export const Index = () => {
+  
   return (
   <>
     <Background/>
@@ -30,7 +31,6 @@ export const Index = async () => {
     </div>
     </>
   );
-
 };
 
 export default Index;
